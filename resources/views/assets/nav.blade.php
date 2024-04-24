@@ -12,7 +12,7 @@
       </div>
   
       <div class="col-2">
-        <a href="{{route('trabajadores.empresas.contratistas')}}">TRABAJADORES CONTRATISTAS POR EMPRESA</a>
+        <a href="{{route('trabajadores.empresas.contratistas')}}">Trabajadores</a>
       </div>
   
       <div class="col-2">
@@ -21,6 +21,10 @@
   
       <div class="col-2">
         <a href="{{route('empresas.contratistas')}}">EMPRESAS</a>
+      </div>
+
+      <div class="col-2">
+        <a href="{{route('empresas.agregar')}}">agregar empresas</a>
       </div>
   
   

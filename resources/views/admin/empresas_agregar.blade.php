@@ -9,21 +9,43 @@
 
     <div class="row border p-3 justify-content-center sombra-encabezados">
       <div class="col-12 text-center">
-        <h4>EMPRESAS CONTRATISTAS</h4>
+        <h4>AGREGAR EMPRESAS CONTRATISTAS</h4>
       </div>
     </div>
   
   
     <div class="row border mt-3  p-3 sombra-encabezados">
-      <div class="col-auto">
-        <input type="search" class="form-control" autofocus>
-      </div>
-      <div class="col-auto mt-1">
-        <button class="btn btn-success btn-sm">
-          <i class=" fa fa-magnifying-glass"></i>
-          BUSCAR
-        </button>
-      </div>
+        <div class="col-3">
+            <b>Nombre de la empresa: </b>
+            <input type="text" class="form-control" placeholder="empresa">
+        </div>
+        <div class="col-3">
+            <b>Dirección: </b>
+            <input type="text" class="form-control" placeholder="dirección de la empresa">
+        </div>
+        <div class="col-3">
+            <b>Link Google Maps: </b>
+            <input type="text" class="form-control" placeholder="http://maps....">
+        </div>
+        <div class="col-3">
+            <b>Responsable de la empresa: </b>
+            <input type="text" class="form-control" placeholder="nombre completo">
+        </div>
+        <div class="col-3">
+            <b>Núm. Teléfono: </b>
+            <input type="text" class="form-control" placeholder="telefono del responsable">
+        </div>
+        <div class="col-3">
+            <b>Correo electrónico: </b>
+            <input type="text" class="form-control" placeholder="Email">
+        </div>
+        <div class="col-3">
+            <b>Contraseña: </b>
+            <input type="password" class="form-control">
+        </div>
+        <div class="col-3 mt-4 ">
+            <button class="btn btn-success">Agregar</button>
+        </div>
     </div>
   
   
@@ -32,7 +54,9 @@
     <div class="row mt-5 border py-5 px-3 shadow justify-content-center">      
   
   
-      <div class="col-sm-12 col-md-8 col-lg-3 border p-3 sombra-filas mx-2">        
+      <div class="col-sm-12 col-md-8 col-lg-3 border p-3 sombra-filas mx-2 my-3  animate__animated animate__zoomInDown">        
+
+
           <div class="row">
   
           <div class="col-12">
@@ -42,17 +66,23 @@
   
           <div class="col-12 mt-2">
               <b>Email: </b> <br>
-              <small>empresa@empresa.com</small>
+              <a href="mailto:empresa@empresa.com">empresa@empresa.com</a>
           </div>
   
           <div class="col-12 mt-2">
               <b>Númer contacto: </b> <br>
-              <a href="tel:+522491142812">2491142812</a>
+              <a href="tel:+522491142812">
+                <i class="fa fa-square-phone"></i>
+                2491142812
+              </a>
           </div>
   
           <div class="col-12 mt-2">
               <b>Dirección: </b> <br>
-              <a href="https://maps.app.goo.gl/4nstns5ujvvmwrc3A">Av. Siempre viva, Tehuacan, Puebla</a>
+              <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#mapa">
+                <i class="fa fa-map-location-dot"></i>
+                  Av. Siempre viva, Tehuacan, Puebla
+              </a>
           </div>
   
           <hr class="my-3">
@@ -74,6 +104,9 @@
           </div>
       </div>
   
+
+  
+      
   
   
     </div>
@@ -96,6 +129,38 @@
       
   
   
+
+      <!-- Modal m google maps -->
+      <div class="modal fade" id="mapa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content ">
+            <div class="modal-body text-center">
+                <div id="mapContainer" style="height: 100%">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d15118.6376684489!2d-97.6482385!3d18.6792733!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses-419!2smx!4v1713930383331!5m2!1ses-419!2smx" height="600px" width="600px" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+
+
+            </div>
+
+          </div>
+        </div>
+      </div>
+  
+      <!-- Modal m google maps -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
