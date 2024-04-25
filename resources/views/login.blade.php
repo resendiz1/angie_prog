@@ -15,16 +15,26 @@
       
       
       
-            <form>
+            <form method="POST" action="{{route('login')}}">
+              @csrf
+              <div data-mdb-input-init class="form-outline mb-4 border">
+                <select class="form-control" name="rol">
+                  <option value="Encargado de SEH">Encargado de SEH</option>
+                  <option value="Admnistrador">Admnistrador</option>
+                  <option value="Contratista">Contratista</option>
+                </select>
+              </div>
+
+
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="email" id="form1Example1" class="form-control" />
+                <input type="text" name="email" id="form1Example1"  class="form-control" />
                 <label class="form-label" for="form1Example1">Correo Electronico</label>
               </div>
             
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" id="form1Example2" class="form-control" />
+                <input type="password" name="password" id="form1Example2" class="form-control" />
                 <label class="form-label" for="form1Example2">Contraseña</label>
               </div>
 
@@ -45,12 +55,17 @@
       
       
           <script>
+
+
+
+
+            const logo = document.getElementById('logo')
+
       
             //Codigo para que cada vez que se actualice la pagina se carge una animación nueva
             const animaciones = ['animate__bounce', 'animate__wobble', 'animate__shakeX', 'animate__rubberBand', 'animate__shakeX', 'animate__fadeIn', 'animate__fadeInBottomRight', 'animate__fadeInLeftBig', 'animate__lightSpeedInLeft', 'animate__rotateInUpRight', 'animate__slideInDown', 'animate__slideInLeft', 'animate__slideInRight', 'animate__slideInUp', 'animate__rollIn'   ]
       
-            const aleatorio = Math.floor(Math.random() * animaciones.length)
-            const logo = document.getElementById('logo')
+            const aleatorio = Math.floor(Math.random() * animaciones.length + 1)
       
       
               logo.classList.add(animaciones[aleatorio])

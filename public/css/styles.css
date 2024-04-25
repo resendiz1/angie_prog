@@ -1,6 +1,6 @@
 body{
-   /* background-color: rgb(195, 183, 183); */
-   background-image: url('/img/huellitas.png');
+   background-color: rgb(195, 183, 183);
+   /* background-image: url('/img/huellitas.png'); */
     background-position: center;
   }
 

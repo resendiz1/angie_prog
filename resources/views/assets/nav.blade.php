@@ -18,10 +18,6 @@
       <div class="col-2">
         <a href="{{route('login')}}">Login</a>
       </div>
-  
-      <div class="col-2">
-        <a href="{{route('empresas.contratistas')}}">EMPRESAS</a>
-      </div>
 
       <div class="col-2">
         <a href="{{route('empresas.agregar')}}">agregar empresas</a>

@@ -5,7 +5,7 @@
 
 
 
-<div class="container bg-white mt-5 p-5 sombra-contenedor ">
+<div class="container bg-white mt-1 p-5 sombra-contenedor ">
 
     <div class="row border p-3 justify-content-center sombra-encabezados">
       <div class="col-12 text-center">
@@ -14,44 +14,48 @@
     </div>
   
   
-    <div class="row border mt-3  p-3 sombra-encabezados">
-        <div class="col-3">
+    <div class="row border mt-1  p-3 sombra-encabezados">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Nombre de la empresa: </b>
             <input type="text" class="form-control" placeholder="empresa">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Dirección: </b>
             <input type="text" class="form-control" placeholder="dirección de la empresa">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Link Google Maps: </b>
             <input type="text" class="form-control" placeholder="http://maps....">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Responsable de la empresa: </b>
             <input type="text" class="form-control" placeholder="nombre completo">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Núm. Teléfono: </b>
             <input type="text" class="form-control" placeholder="telefono del responsable">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Correo electrónico: </b>
             <input type="text" class="form-control" placeholder="Email">
         </div>
-        <div class="col-3">
+        <div class="col-sm-12 col-md-6 col-lg-3">
             <b>Contraseña: </b>
             <input type="password" class="form-control">
         </div>
-        <div class="col-3 mt-4 ">
-            <button class="btn btn-success">Agregar</button>
+        <div class="col-sm-12 col-md-6 col-lg-3 mt-4 ">
+            <button class="btn btn-success w-100">
+              Agregar
+            </button>
         </div>
     </div>
   
   
   
   
-    <div class="row mt-5 border py-5 px-3 shadow justify-content-center">      
+
+
+    <div class="row mt-2 border py-5 px-3 shadow justify-content-center">      
   
   
       <div class="col-sm-12 col-md-8 col-lg-3 border p-3 sombra-filas mx-2 my-3  animate__animated animate__zoomInDown">        
