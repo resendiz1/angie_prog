@@ -43,8 +43,21 @@ return [
 
         'admins' =>[
             'driver' => 'session',
-            'provider' => 'admins'
+            'provider' => 'admin'
+        ],
+
+
+        'empresa'=>[
+            'driver' => 'session',
+            'provider' => 'empresas'
+        ],
+
+        'encargado' =>[
+            'driver' => 'session',
+            'provider' => 'encargados'
         ]
+
+
     ],
 
     /*
@@ -71,11 +84,29 @@ return [
         ],
 
         //guard de administrador
-        'admins' => [
+        'admin' => [
             'driver' => 'eloquent',
             'model' => App\Models\Admin::class,
-        ]
+        ],
         //guard de administrador
+
+
+        //guard de la empresa contratista
+        'empresa' =>[
+            'driver' => 'eloquent',
+            'model' => App\Models\Empresa::class
+        ],
+        //guard de la empresa contratista
+
+
+        //guard del encargado de seh
+        'encargados' =>[
+            'driver' => 'eloquent',
+            'model' => App\Models\Encargado::class
+        ]
+        //guard del encargado de seh
+
+
 
 
 

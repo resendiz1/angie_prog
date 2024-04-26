@@ -4,7 +4,7 @@
     <div class="row">
       
       <div class="col-1 mx-3 d-flex align-items-center">
-        <img src="img/angie.png"  class="img-fluid w-50" alt="">
+        <img src="{{asset('img/angie.png')}}"  class="img-fluid w-50" alt="">
       </div>
   
       <div class="col-2">
@@ -20,7 +20,7 @@
       </div>
 
       <div class="col-2">
-        <a href="{{route('empresas.agregar')}}">agregar empresas</a>
+        <a href="{{route('show.contratistas')}}">Show contratistas</a>
       </div>
   
   

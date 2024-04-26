@@ -12,15 +12,27 @@
           <div class="col-5 bg-white shadow shadow-sm mt-5 border p-5 text-center sombra-filas">
             <h4 class=" text-center">Inicio de Sesión</h4>
             <img src="img/angie.png" id="logo" class="img-fluid mb-5 animate__animated " style="width: 100px; height: 100px;" alt="">
-      
-      
-      
+             <br>
+              @if (session('error_sesion_admin'))
+                  {{session('error_sesion_admin')}}
+              @endif      
+
+              @if (session('error_sesion_encargado'))
+                  {{session('error_sesion_encargado')}}
+              @endif
+
+              @if (session('error_sesion_contratista'))
+                  {{session('error_sesion_contratista')}}
+              @endif
+
+            {{Auth::guard('encargado')->user()->name}}
+
             <form method="POST" action="{{route('login')}}">
               @csrf
               <div data-mdb-input-init class="form-outline mb-4 border">
                 <select class="form-control" name="rol">
-                  <option value="Encargado de SEH">Encargado de SEH</option>
-                  <option value="Admnistrador">Admnistrador</option>
+                  <option value="Encargado">Encargado de SEH</option>
+                  <option value="Administrador">Admnistrador</option>
                   <option value="Contratista">Contratista</option>
                 </select>
               </div>
