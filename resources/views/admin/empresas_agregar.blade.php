@@ -11,6 +11,9 @@
       <div class="col-12 text-center">
         <h4>AGREGAR EMPRESAS CONTRATISTAS</h4>
       </div>
+      <div class="text-danger flotante">
+        <i class="fa fa-heart animate__animated animate__heartBeat animate__infinite  	infinite fa-5x"></i>
+      </div>
     </div>
   
   
@@ -28,9 +31,11 @@
               name="nombre" 
               placeholder="empresa"
               value="{{old('nombre')}}"
-              class=" form-control @if($errors->first('nombre')) {{'is-invalid'}}@endif" >
+              class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif
+              @if(!$errors->first('nombre')) {{'is-valid'}}@endif  " >
               {!!$errors->first('nombre', '<small class="text-danger">:message</small>')!!}
-            
+             
+
         </div>
 
 
@@ -43,7 +48,8 @@
               name="direccion" 
               placeholder="dirección de la empresa"
               value="{{old('direccion')}}"
-              class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif" >
+              class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif
+              @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
               {!!$errors->first('direccion', '<small class="text-danger">:message</small>')!!}
 
         </div>
@@ -58,7 +64,8 @@
               name="maps" 
               placeholder="http://maps...."
               value="{{old('maps')}}"
-              class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif" >
+              class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif 
+              @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
               {!!$errors->first('maps', '<small class="text-danger">:message</small>')!!}
 
         </div>
@@ -74,7 +81,8 @@
               name="responsable" 
               placeholder="nombre completo"
               value="{{old('resposable')}}"
-              class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif" >
+              class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif  
+               @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
               {!!$errors->first('responsable', '<small class="text-danger">:message</small>')!!}
               
 
@@ -88,9 +96,11 @@
             <input 
               type="text" 
               name="telefono_responsable" 
+              minlength="10"
               placeholder="telefono del responsable"
               value="{{old('telefono_responsable')}}"
-              class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif" >
+              class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
+              @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >
               {!!$errors->first('telefono_responsable', '<small class="text-danger">:message</small>')!!}
 
         </div>
@@ -103,11 +113,12 @@
             <b>Correo electrónico: </b>
 
             <input 
-              type="text" 
+              type="email" 
               name="email_responsable" 
               placeholder="Email"
               value="{{old('email_responsable')}}"
-              class=" form-control @if($errors->first('email_responsable')) {{'is-invalid'}}@endif" >
+              class=" form-control @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
+              @if(!$errors->first('email_responsable'))  {{'is-valid'}}" @endif >
               {!!$errors->first('email_responsable', '<small class="text-danger" >:message</small>')!!}
 
         </div>
@@ -116,21 +127,35 @@
 
 
         <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Contraseña: </b>
-        
-            <input 
-              type="password" 
-              name="password" 
-              value="{{old('password')}}"
-              class=" form-control @if($errors->first('password')) {{'is-invalid'}}@endif" >
-              {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
+
+          <div class="row align-items-center">
+            <div class="col-10">
+
+              <b>Contraseña: </b>
+              <input 
+                type="password" 
+                id="password"
+                name="password" 
+                value="{{old('password')}}"
+                class=" form-control @if($errors->first('password')) {{'is-invalid'}}@endif 
+                @if(!$errors->first('password'))    {{'is-valid'}} @endif " >
+                {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
+
+            </div>
+
+            <div class="col-2">
+              <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password mt-4  "></span>
+            </div>
+
+          </div>
+
 
         </div>
 
 
         <div class="col-sm-12 col-md-6 col-lg-3 mt-4 ">
             <button class="btn btn-success w-100">
-              Agregar {{count($errors)}}
+              Agregar
             </button>
         </div>
       </div>
@@ -145,8 +170,9 @@
   
   {{-- Tarjetas con la información de los contratistas --}}
     <div class="row mt-2 border py-5 px-3 shadow justify-content-center">  
-      
-      <button class="btn btn-dark" onclick="alertify.alert('Mensaje de alerta')" >click me</button>
+      <div class="col-12 bg-dark text-white text-center">
+        <h3>EMPRESAS</h3>
+      </div>
   
 @forelse ($empresas as $empresa)
       
@@ -355,5 +381,32 @@
   <!-- AQUI ESTAN TODOS LOS MODALES -->
   
   
+
+
+
+
+
+
+  {{-- SCRIPTS --}}
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+<script>
+        $(document).ready(function() {
+         $(".toggle-password").click(function() {
+            $(this).toggleClass("fa-eye fa-eye-slash");
+            var input = $($(this).attr("toggle"));
+            if (input.attr("type") == "password") {
+                input.attr("type", "text");
+            } else {       
+             input.attr("type", "password");
+          }
+         });
+     });
+</script>
+
+
+
     
 @endsection

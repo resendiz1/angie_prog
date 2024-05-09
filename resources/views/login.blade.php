@@ -14,18 +14,18 @@
             <img src="img/angie.png" id="logo" class="img-fluid mb-5 animate__animated " style="width: 100px; height: 100px;" alt="">
              <br>
               @if (session('error_sesion_admin'))
-                  {{session('error_sesion_admin')}}
+                  <span class="text-center text-danger fw-bold">{{session('error_sesion_admin')}}</span>
               @endif      
 
               @if (session('error_sesion_encargado'))
-                  {{session('error_sesion_encargado')}}
+                 <span class="text-center text-danger fw-bold"> {{session('error_sesion_encargado')}}</span>
               @endif
 
               @if (session('error_sesion_contratista'))
-                  {{session('error_sesion_contratista')}}
+                 <span class="text-center text-danger fw-bold"> {{session('error_sesion_contratista')}}</span>
               @endif
 
-            {{Auth::guard('encargado')->user()->name}}
+            {{-- {{Auth::guard('encargado')->user()->name}} --}}
 
             <form method="POST" action="{{route('login')}}">
               @csrf

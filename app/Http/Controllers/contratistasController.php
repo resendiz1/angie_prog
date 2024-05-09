@@ -25,7 +25,7 @@ class contratistasController extends Controller
 
             'nombre' => 'required',
             'direccion' => 'required',
-            'telefono_responsable' => 'required',
+            'telefono_responsable' => 'required|min:10',
             'responsable' => 'required',
             'email_responsable' => 'required',
             'password' => 'required',
