@@ -3,7 +3,20 @@
 @include('assets.nav')
 
 
+<!-- NOTIFICACIONES -->
+@if (session('eliminado'))
+<div class="bg-danger text-white notificacion p-3 text-center">
+  <span class=" fw-bold"> {!!session('eliminado')!!} </span> <br> 
+  <i class="fa fa-trash fa-2x animate__animated animate__wobble animate__infinite mt-2"></i>
+</div>   
+@endif
 
+@if (session('editado'))
+<div class="bg-success text-white notificacion p-3 text-center">
+  <span class=" fw-bold"> {!!session('editado')!!} </span> <br> 
+  <i class="fa fa-edit fa-2x animate__animated animate__wobble animate__infinite mt-2"></i>
+</div>   
+@endif
 
 <div class="container bg-white mt-1 p-5 sombra-contenedor ">
 
@@ -211,14 +224,14 @@
             
             <div class="col-6 text-center mt-1">
                 <small class="fw-bold">ELIMINAR: </small> <br> 
-                <a href="#" class="btn btn-danger btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#eliminar">
+                <a href="#" class="btn btn-danger btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$empresa->id}}">
                 <i class="fa fa-eraser mx-2"></i>
                 </a>
             </div>
     
             <div class="col-6 text-center mt-1">
                 <small class="fw-bold">EDITAR: </small> <br> 
-                <a href="#" class="btn btn-primary btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#editar">
+                <a href="#" class="btn btn-primary btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#edit{{$empresa->id}}">
                 <i class="fa fa-edit mx-2"></i>
                 </a>
             </div>
@@ -242,6 +255,115 @@
         </div>
       </div>
       <!-- Modal m google maps -->
+
+
+
+
+      <!-- Modal eliminar empresa -->
+      <div class="modal fade" id="e{{$empresa->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">¿DESEA ELIMINAR AL LA EMPRESA?</h5>
+    
+              <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body border text-center">
+              <form action="{{route('empresa.delete', $empresa->id)}}" method="POST">
+                @csrf
+                <input type="hidden" name="id_empresa" value="{{$empresa->id}}" >
+                <button  class="btn btn-danger w-100 mt-3" >CONFIRMAR</button>
+
+              </form>
+
+              <button type="button" class="btn btn-primary w-100 mt-2" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+  
+      <!-- Modal eliminar empresa -->
+
+
+
+
+
+
+          <!-- Modal editar empresa -->
+          <div class="modal fade" id="edit{{$empresa->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Editando Empresa</h5>
+                  <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body border">
+
+                  <form action="{{route('empresa.editar', $empresa->id)}}" method="POST">
+                    @csrf @method('patch')
+                    <div class="form-goup m-2">
+                        <label for="">Nombre Empresa: </label>
+                        <input type="text" name="nombre" class="form-control" value="{{$empresa->nombre}}" >
+                    </div>
+
+                    <div class="form-goup m-2">
+                      <label for="">Nombre del responsable: </label>
+                      <input type="text" name="nombre_responsable" class="form-control" value="{{$empresa->nombre_responsable}}">
+                    </div>
+        
+                    <div class="form-goup m-2">
+                        <label for="">Email: </label>
+                        <input type="text"name="email" class="form-control" value="{{$empresa->email}}">
+                    </div>
+        
+                    <div class="form-goup m-2">
+                        <label for="">Teléfono: </label>
+                        <input type="tel" name="telefono" class="form-control" value="{{$empresa->telefono}}" >
+                    </div>
+        
+                    <div class="form-goup m-2">
+                        <label for="">Dirección: </label>
+                        <input type="text" name="direccion" class="form-control" value="{{$empresa->direccion}}">
+                    </div>
+        
+                    <div class="form-goup m-2">
+                        <label for="">Link mapa: </label>
+                        <input type="text" name="maps" class="form-control" value="{{$empresa->maps}}">
+                    </div>
+
+                    <div class="form-goup m-2">
+                      <label for="">Contraseña: </label>
+                      <input type="password" name="password" class="form-control" value="{{$empresa->password}}">
+                    </div>
+
+
+
+                  
+      
+                </div>
+                
+                
+
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-success w-100" data-mdb-ripple-init >
+                    CONFIRMAR
+                  </button>
+              </form>
+                  <button type="button" class="btn btn-warning w-100" data-mdb-ripple-init data-mdb-dismiss="modal" >
+                    CANCELAR
+                  </button>
+                  
+                </div>
+      
+              </div>
+            </div>
+          </div>
+      
+          <!-- Modal editar empresa -->
+      
+
+    
 
 
 
@@ -278,97 +400,11 @@
     <div class="row">
       
   
-  
-
-   
-
-
-
-
-
-
-
-
-
-
-
-
-
 
   
   
   
-      <!-- Modal editar empresa -->
-      <div class="modal fade" id="eliminar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">¿DESEA ELIMINAR AL LA EMPRESA?</h5>
-              <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body border text-center">
-              <button type="button" class="btn btn-primary w-100" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
-              
-              <button type="button" class="btn btn-danger w-100 mt-3" id="confirma" data-mdb-ripple-init >CONFIRMAR</button>
-            </div>
-          </div>
-        </div>
-      </div>
   
-      <!-- Modal editar empresa -->
-  
-  
-  
-  
-          <!-- Modal editar empresa -->
-          <div class="modal fade" id="editar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">¿DESEA ELIMINAR AL LA EMPRESA?</h5>
-                    <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <div class="modal-body border">
-        
-                    <div class="form-goup m-2">
-                        <label for="">Nombre Empresa: </label>
-                        <input type="text" class="form-control">
-                    </div>
-        
-                    <div class="form-goup m-2">
-                        <label for="">Email: </label>
-                        <input type="text" class="form-control">
-                    </div>
-        
-                    <div class="form-goup m-2">
-                        <label for="">Teléfono: </label>
-                        <input type="tel" class="form-control">
-                    </div>
-        
-                    <div class="form-goup m-2">
-                        <label for="">Dirección: </label>
-                        <input type="tel" class="form-control">
-                    </div>
-        
-                    <div class="form-goup m-2">
-                        <label for="">Link mapa: </label>
-                        <input type="link" class="form-control">
-                    </div>
-        
-                  </div>
-        
-                  <div class="modal-footer">
-                    <button type="button" class="btn btn-warning w-100" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
-                    
-                    <button type="button" class="btn btn-success w-100 mt-3" id="confirma" data-mdb-ripple-init >CONFIRMAR</button>
-                  </div>
-        
-                </div>
-              </div>
-            </div>
-        
-            <!-- Modal editar empresa -->
-        
   
   
   
@@ -380,7 +416,7 @@
   
   <!-- AQUI ESTAN TODOS LOS MODALES -->
   
-  
+
 
 
 

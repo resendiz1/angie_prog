@@ -44,7 +44,7 @@ class contratistasController extends Controller
         $empresa->telefono = request('telefono_responsable');
         $empresa->nombre_responsable = request('responsable');
         $empresa->email = request('email_responsable');
-        $empresa->password = request('password');
+        $empresa->password = bcrypt(request('password'));
         $empresa->maps = request('maps');
 
         $empresa->save();
@@ -52,6 +52,39 @@ class contratistasController extends Controller
         return back()->with('empresa_agregada', '¡La empresa fue agregada!');
 
 
+
+    }
+
+
+    public function empresa_delete($id){
+
+        $empresa = Empresa::findOrFail($id);
+        $empresa->delete();
+        return back()->with('eliminado','La empresa fue eliminada');
+
+    } 
+
+    public function empresa_editar($id){
+
+        $empresa = Empresa::findOrFail($id);
+
+        $password = bcrypt(request('password'));
+        if($empresa->password == request('password')){
+            $password = request('password');
+        }
+
+
+
+        $empresa->nombre = request('nombre');
+        $empresa->direccion = request('direccion');
+        $empresa->telefono = request('telefono');
+        $empresa->nombre_responsable = request('nombre_responsable');
+        $empresa->email = request('email'); 
+        $empresa->password = $password;
+        $empresa->maps = request('maps');
+        $empresa->save();
+
+        return back()->with('editado', 'Empresa '.request('nombre'). ' editada');
 
     }
 

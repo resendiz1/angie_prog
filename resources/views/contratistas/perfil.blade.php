@@ -12,7 +12,7 @@
       <!-- <div class="col-4"></div> -->
   
       <div class="col-12 text-center mb-1">
-        <h4>NOMBRE DE LA EMPRESA</h4>
+        <h4>{{$empresa[0]->nombre}}</h4>
       </div>
   
   

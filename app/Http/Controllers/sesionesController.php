@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Auth;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class sesionesController extends Controller
 {
@@ -13,10 +14,11 @@ class sesionesController extends Controller
     public function login(Request $request){
         // return request('rol');
         $credentials = $request->only('email', 'password');
+        $email = request('email');
         
 
 //bloque de inicio de sesion del administrador
-        if(request('rol') == 'Administrador' ){
+        if(request('rol') == 'administrador' ){
     
             if(Auth::guard('admins')->attempt($credentials)){   
                 return 'inicio exitoso como admin';
@@ -31,7 +33,7 @@ class sesionesController extends Controller
 
 
 //bloque d inicio de sesion del encargado 
-        if(request('rol') == 'Encargado' ){
+        if(request('rol') == 'encargado' ){
 
             if(Auth::guard('encargado')->attempt($credentials)){
                 return 'inicio de encargado exitoso!';
@@ -46,9 +48,12 @@ class sesionesController extends Controller
 
 
 //bloque de inicio de sesion de la empresa
-        if(request('rol') == 'Contratista'){
-            if(Auth::guard('contratista')){
-                return 'inicio de contratista exitoso!';
+        if(request('rol') == 'empresa'){
+            if(Auth::guard('empresa')->attempt($credentials)){
+
+                $empresa = DB::select("SELECT*FROM empresas WHERE email LIKE  '$email'");   
+                
+                return view('contratistas.perfil', compact('empresa'));
             }
         }
         return back()->with('error_sesion_contratista', 'Credenciales invalidas para Contratistas');
@@ -56,12 +61,10 @@ class sesionesController extends Controller
 //bloque de inicio de sesion de la empresa
 
 
-
-
-
-
-
     }
+
+
+
 
 
 }

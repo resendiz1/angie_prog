@@ -92,7 +92,7 @@ return [
 
 
         //guard de la empresa contratista
-        'empresa' =>[
+        'empresas' =>[
             'driver' => 'eloquent',
             'model' => App\Models\Empresa::class
         ],

@@ -1,4 +1,3 @@
-
 @extends('plantilla')
 @section('contenido')
 @include('assets.nav')
@@ -31,9 +30,9 @@
               @csrf
               <div data-mdb-input-init class="form-outline mb-4 border">
                 <select class="form-control" name="rol">
-                  <option value="Encargado">Encargado de SEH</option>
-                  <option value="Administrador">Admnistrador</option>
-                  <option value="Contratista">Contratista</option>
+                  <option value="encargado">Encargado de SEH</option>
+                  <option value="administrador">Admnistrador</option>
+                  <option value="empresa">Empresa</option>
                 </select>
               </div>
 

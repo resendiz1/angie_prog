@@ -37,3 +37,11 @@ body{
     z-index: 3;
     
 }
+
+.notificacion{
+    position: absolute;
+    width: 200px;
+    top: 100px;
+    right: 8px;
+    z-index: 3; 
+}
