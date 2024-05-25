@@ -30,3 +30,12 @@ Route::post('/encargado/contratistas', [contratistasController::class, 'empresa_
 Route::post('/encargado/contratistas/{id}/eliminar', [contratistasController::class, 'empresa_delete'])->name('empresa.delete');
 
 Route::patch('/encargado/contratistas/{id}/editar', [contratistasController::class, 'empresa_editar'])->name('empresa.editar');
+
+
+
+
+
+
+
+//Rutas de el perfil de las empresa
+Route::post('/contratista_agregado', [contratistasController::class, 'add_contratista'])->name('add.contratista');

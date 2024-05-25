@@ -110,29 +110,32 @@
               <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5 border">
-  
+              <form action="{{route('add.contratista')}}" method="POST">
+                @csrf
+
               <div class="form-group border p-3">
                 <label for="" class="h6">NOMBRE COMPLETO</label>
                 <input type="text" class="form-control">
+                <input type="hidden" value="{{$empresa[0]->id}}" name="id_empresa">
               </div>
   
               <div class="form-group mt-3 border p-3">
                 <label for="" class="h6">ALTA DEL IMSS</label>
-                <input type="file" class="form-control">
+                <input type="file" class="form-control" name="imss">
               </div>
   
               <div class="form-group mt-3 border p-3">
                 <label for="" class="h6">IDENTIFICACIÓN OFICIAL</label>
-                <input type="file" class="form-control">
+                <input type="file" class="form-control" name="identificacion">
               </div>
   
               <div class="form-group mt-3 border p-3">
                 <label for="" class="h6">CONSTANCIA DC3</label>
-                <input type="file" class="form-control">
+                <input type="file" class="form-control" name="dc3">
               </div>
   
   
-  
+              </form>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-primary" data-mdb-ripple-init>GUARDAR</button>

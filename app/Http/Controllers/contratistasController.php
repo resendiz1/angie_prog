@@ -90,4 +90,10 @@ class contratistasController extends Controller
 
 
 
+    public function add_contratista(){
+        return request();
+    }
+
+
+
 }
