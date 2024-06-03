@@ -7,7 +7,7 @@
 
     <div class="row border p-3 justify-content-center sombra-encabezados">
       <div class="col-12 text-center">
-        <h4>CONTRATISTAS: NOMBRE_EMPRESA</h4>
+        <h4>CONTRATISTAS DE LA EMPRESA: <br> NOMBRE_EMPRESA</h4>
       </div>
       <div class="col-auto mx-2">
         <button class="btn btn-success btn-sm">

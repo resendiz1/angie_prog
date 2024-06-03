@@ -49,18 +49,32 @@ class sesionesController extends Controller
 
 //bloque de inicio de sesion de la empresa
         if(request('rol') == 'empresa'){
+
             if(Auth::guard('empresa')->attempt($credentials)){
 
-                $empresa = DB::select("SELECT*FROM empresas WHERE email LIKE  '$email'");   
+                $empresa = Auth::guard('empresa')->user()->id;
+
+                $contratistas = DB::select("SELECT*FROM contratistas WHERE id_empresa LIKE  '$empresa'");   
                 
-                return view('contratistas.perfil', compact('empresa'));
+                  return redirect()->route('perfil.contratistas');
+                //  return view('contratistas.perfil', compact('empresa')); 
             }
+
         }
+
         return back()->with('error_sesion_contratista', 'Credenciales invalidas para Contratistas');
 
 //bloque de inicio de sesion de la empresa
 
 
+    }
+
+
+
+
+
+    public function perfil_contratistas(){
+        return view('contratistas.perfil');
     }
 
 

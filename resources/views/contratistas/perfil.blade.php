@@ -12,7 +12,17 @@
       <!-- <div class="col-4"></div> -->
   
       <div class="col-12 text-center mb-1">
-        <h4>{{$empresa[0]->nombre}}</h4>
+        <h4>{{Auth::guard('empresa')->user()->nombre}}</h4>
+        
+        @if (session('add_sua'))
+            <h6 class="text-success">{{session('add_sua')}}</h6>
+        @endif
+
+        @if (session('eliminado'))
+        <h6 class="text-danger">{{session('eliminado')}}</h6>
+        @endif
+
+
       </div>
   
   
@@ -24,10 +34,20 @@
       </div>
   
       <div class="col-auto mb-2">
+      @if (!(Auth::guard('empresa')->user()->sua))
         <button class=" btn btn-info btn-sm py-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#sua">
           <i class="fa fa-file"></i>
-          Subir SUA / PAGO
+          Subir SUA / PAGO 
         </button>
+          
+      @else
+      <a href="{{Storage::url(Auth::guard('empresa')->user()->sua)}}" target="_blank" class=" btn btn-dark btn-sm py-1">
+        <i class="fa fa-file"></i>
+          Ver SUA / PAGO 
+      </a>
+      @endif
+
+
       </div>
   
   
@@ -36,52 +56,93 @@
   
   
     <hr>
-  
-  
-  
-  
-    <div class="row mt-4">
-      <div class="col-12 text-center">
-        <h4>TRABAJADORES EN ACTIVO</h4>
-      </div>
-    </div>
-  
-  
-  
-  
-  
+
+@php
+    $id = Auth::guard('empresa')->user()->id;
+    $contratistas = DB::select("SELECT*FROM contratistas WHERE id_empresa LIKE $id");
+@endphp
+
+
+@forelse ($contratistas as $contratista)
+        
     <div class="row justify-content-center mt-4 border p-3 sombra-filas">
   
-          <div class="col-2">
-            <b>Nombre: </b> <br>
-            <small>Nombre contratista</small>
-          </div>
-  
-          <div class="col-2">
-            <b>NSS: </b> <br>
-            <a href="#">NSS</a>
-          </div>
-          
-  
-          <div class="col-2">
-            <b>INE: </b> <br>
-            <a href="#">INE</a>
-          </div>
-  
-  
-          <div class="col-2">
-            <b>DC3: </b> <br>
-            <a href="#">DC3</a>
-          </div>
-  
-          <div class="col-2 text-center">
-            <b>ELIMINAR: </b> <br>
-            <a href="#" class="btn btn-danger btn-sm p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#eraser">
-            <i class="fa fa-eraser mx-2"></i>
-            </a>
-          </div>
-  
+      <div class="col-2">
+        <b>Nombre: </b> <br>
+        <small>{{$contratista->nombre_completo}}</small>
+      </div>
+
+      <div class="col-2">
+        <b>NSS: </b> <br>
+        <a href="{{Storage::url($contratista->nss)}}" target="_blank">NSS</a>
+      </div>
+      
+
+      <div class="col-2">
+        <b>INE: </b> <br>
+        <a href="{{Storage::url($contratista->ine)}}" target="_blank">INE</a>
+      </div>
+
+
+      <div class="col-2">
+        <b>DC3: </b> <br>
+        <a href="{{Storage::url($contratista->dc3)}}" target="_blank">DC3</a>
+      </div>
+
+      <div class="col-2 text-center">
+        <b>ELIMINAR: </b> <br>
+        <a href="#" class="btn btn-danger btn-sm p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$contratista->id}}">
+        <i class="fa fa-eraser mx-2"></i>
+        </a>
+      </div>
+
     </div>
+
+
+
+
+ <!-- Modal borrar trabajador -->
+ <div class="modal fade" id="e{{$contratista->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h5 class="modal-title" id="exampleModalLabel">ELIMINAR A: {{$contratista->nombre_completo}} </h5> <br>
+
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body border text-center">
+        <form action="{{route('delete.contratista', $contratista->id)}}" method="POST" >
+          @csrf @method('DELETE')
+
+      </div>
+      <div class="modal-footer">
+          <button class="btn btn-danger w-100 mt-3" data-mdb-ripple-init >ELIMINAR</button>
+      </form>
+          <button type="button" class="btn btn-primary w-100" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+ <!-- Modal borrar trabajador -->
+
+
+
+
+    @empty
+        
+    @endforelse
+
+  
+  
+
+  
+  
+  
+  
+  
+
   
   
   
@@ -110,23 +171,24 @@
               <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-5 border">
-              <form action="{{route('add.contratista')}}" method="POST">
+              
+              <form action="{{route('add.contratista')}}" method="POST" enctype="multipart/form-data">
                 @csrf
 
               <div class="form-group border p-3">
                 <label for="" class="h6">NOMBRE COMPLETO</label>
-                <input type="text" class="form-control">
-                <input type="hidden" value="{{$empresa[0]->id}}" name="id_empresa">
+                <input type="text" class="form-control" name="nombre_completo">
+                <input type="hidden" value="{{Auth::guard('empresa')->user()->id}}" name="id_empresa">
               </div>
   
               <div class="form-group mt-3 border p-3">
                 <label for="" class="h6">ALTA DEL IMSS</label>
-                <input type="file" class="form-control" name="imss">
+                <input type="file" class="form-control" name="nss">
               </div>
   
               <div class="form-group mt-3 border p-3">
                 <label for="" class="h6">IDENTIFICACIÓN OFICIAL</label>
-                <input type="file" class="form-control" name="identificacion">
+                <input type="file" class="form-control" name="ine">
               </div>
   
               <div class="form-group mt-3 border p-3">
@@ -135,10 +197,11 @@
               </div>
   
   
-              </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-primary" data-mdb-ripple-init>GUARDAR</button>
+              <button class="btn btn-primary" data-mdb-ripple-init>Guardar</button>
+          
+             </form>  {{--!del formulario --> --}}
               <button type="button" class="btn btn-secondary" data-mdb-ripple-init data-mdb-dismiss="modal">Close</button>
             </div>
           </div>
@@ -152,24 +215,7 @@
   
   
   
-  <!-- Modal agregar trabajador -->
-  <div class="modal fade" id="eraser" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">ELIMINAR TRABAJADOR</h5>
-          <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body border text-center">
-          <button type="button" class="btn btn-primary w-100" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
-          
-          <button type="button" class="btn btn-danger w-100 mt-3" data-mdb-ripple-init >ELIMINAR</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-   <!-- Modal agregar trabajador -->
+ 
   
   
   
@@ -178,17 +224,24 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">SUBIR SUA / PAGO</h5>
+          <h5 class="modal-title" id="exampleModalLabel">
+            SUBIR SUA / PAGO
+          </h5>
           <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body border text-center">
-          <input type="file" class="form-control">
-        </div>
-  
-        <div class="modal-footer">
-  
+          <form action="{{route('sua.empresa', $id)}}" method="POST" enctype="multipart/form-data">
+            @csrf @method('PATCH') 
+            <input type="file" name="sua" class="form-control">
+
+          </div>
+          
+          <div class="modal-footer">
+          
+            <button  class="btn btn-success" data-mdb-ripple-init >GUARDAR</button>
+          </form>
+
           <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-dismiss="modal" >CANCELAR</button>
-          <button type="button" class="btn btn-success" data-mdb-ripple-init >GUARDAR</button>
   
         </div>
        

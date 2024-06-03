@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('contratistas', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre_empresa');
             $table->string('id_empresa');
             $table->string('nombre_completo');
             $table->string('ine');

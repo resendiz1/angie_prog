@@ -7,19 +7,19 @@
         <img src="{{asset('img/angie.png')}}"  class="img-fluid w-50" alt="">
       </div>
   
-      <div class="col-2">
-        <a href="{{route('contratistas.perfil')}}">Perfil contratistas</a>
+      <div class="col-2 mt-3 fw-bold">
+        <a href="{{route('perfil.contratistas')}}">Perfil contratistas</a>
       </div>
   
-      <div class="col-2">
+      <div class="col-2 mt-3 fw-bold">
         <a href="{{route('trabajadores.empresas.contratistas')}}">Trabajadores</a>
       </div>
   
-      <div class="col-2">
+      <div class="col-2 mt-3 fw-bold">
         <a href="{{route('login')}}">Login</a>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 mt-3 fw-bold">
         <a href="{{route('show.contratistas')}}">Show contratistas</a>
       </div>
   
