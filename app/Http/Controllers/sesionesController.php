@@ -17,12 +17,17 @@ class sesionesController extends Controller
         $email = request('email');
         
 
+
+
+
 //bloque de inicio de sesion del administrador
         if(request('rol') == 'administrador' ){
     
             if(Auth::guard('admins')->attempt($credentials)){   
                 return 'inicio exitoso como admin';
             }
+
+
             return back()->with('error_sesion_admin', 'Credenciales invalidas para administrador');
 
         }
@@ -36,11 +41,10 @@ class sesionesController extends Controller
         if(request('rol') == 'encargado' ){
 
             if(Auth::guard('encargado')->attempt($credentials)){
-                return 'inicio de encargado exitoso!';
+                return redirect()->route('perfil.encargado');
             }
 
             return back()->with('error_sesion_encargado', 'Credenciales invalidas para Encargado de SEH');
-
         }
 //bloque d inicio de sesion del encargado 
 
@@ -50,19 +54,19 @@ class sesionesController extends Controller
 //bloque de inicio de sesion de la empresa
         if(request('rol') == 'empresa'){
 
-            if(Auth::guard('empresa')->attempt($credentials)){
-
-                $empresa = Auth::guard('empresa')->user()->id;
-
-                $contratistas = DB::select("SELECT*FROM contratistas WHERE id_empresa LIKE  '$empresa'");   
-                
+            if(Auth::guard('empresa')->attempt($credentials)){               
                   return redirect()->route('perfil.contratistas');
-                //  return view('contratistas.perfil', compact('empresa')); 
             }
+
+            return back()->with('error_sesion_contratista', 'Credenciales invalidas para Contratistas');
 
         }
 
-        return back()->with('error_sesion_contratista', 'Credenciales invalidas para Contratistas');
+
+
+
+
+        
 
 //bloque de inicio de sesion de la empresa
 

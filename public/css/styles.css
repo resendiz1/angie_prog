@@ -1,7 +1,10 @@
 body{
-   background-color: rgb(219, 218, 218);
-   /* background-image: url('/img/huellitas.png'); */
+    /* background-color: rgb(239, 235, 235);  */
+    background-image: url('/img/fondo.jpg'); 
     background-position: center;
+    background-repeat: repeat;
+    background-size: cover;
+
   }
 
   .sombra-filas {
@@ -35,6 +38,8 @@ body{
     bottom: 40px;
     left: 40px;
     z-index: 3;
+    width: 100px;
+    height: 100px;
     
 }
 
@@ -44,4 +49,20 @@ body{
     top: 100px;
     right: 8px;
     z-index: 3; 
+}
+
+
+
+.menu-contratistas{
+    background-image: url('/img/fondo.jpg');
+    background-size: cover;
+}
+
+.full-screen-container {
+    width: 100%;
+    height: 100vh; /* 100% de la altura de la pantalla */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: lightgray; /* Color de fondo opcional */
 }

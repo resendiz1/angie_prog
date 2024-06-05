@@ -1,15 +1,20 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
     
 
 
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
     <!-- Start your project here-->
     <div class="container mt-5">
         <div class="row mt-5 justify-content-center">
       
-          <div class="col-5 bg-white shadow shadow-sm mt-5 border p-5 text-center sombra-filas">
-            <h4 class=" text-center">Inicio de Sesión</h4>
+          <div class="col-4 bg-white shadow shadow-sm mt-5 border p-5 text-center sombra-filas">
+            <h4 class=" text-center mb-3">Inicio de Sesión</h4>
             <img src="img/angie.png" id="logo" class="img-fluid mb-5 animate__animated " style="width: 100px; height: 100px;" alt="">
              <br>
               @if (session('error_sesion_admin'))
