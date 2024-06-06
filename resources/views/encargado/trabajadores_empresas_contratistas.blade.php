@@ -7,13 +7,13 @@
 
     <div class="row border p-3 justify-content-center sombra-encabezados">
       <div class="col-12 text-center">
-        <h4>CONTRATISTAS DE LA EMPRESA: <br> NOMBRE_EMPRESA</h4>
+        <h4>CONTRATISTAS DE LA EMPRESA: <br> {{$empresa[0]->nombre}}</h4>
       </div>
       <div class="col-auto mx-2">
-        <button class="btn btn-success btn-sm">
+        <a href="{{Storage::url($empresa[0]->sua)}}" class="btn btn-success btn-sm">
           <i class="fa fa-magnifying-glass"></i>
-          VER SUA
-        </button>
+          VER SUA / PAGO
+        </a>
       </div>
     </div>
   
@@ -32,30 +32,32 @@
   
   
   
-  
-    <div class="row justify-content-center mt-5 border p-3 sombra-filas animate__animated animate__bounceIn">      
-        <div class="row">
+  @forelse ($contratistas as $contratista)
+      
+  <div class="row justify-content-center mt-5 border p-3 sombra-filas animate__animated animate__bounceIn">      
+    
+    <div class="row">
   
           <div class="col-sm-6 col-md-6  col-lg-3 ">
             <b>Nombre: </b> <br>
-            <small>Nombre contratista</small>
+            <small>{{$contratista->nombre_completo}}</small>
           </div>
   
           <div class="col-sm-6 col-md-6  col-lg-2">
             <b>NSS: </b> <br>
-            <a href="#">NSS</a>
+            <a href="{{Storage::url($contratista->nss)}}">NSS</a>
           </div>
           
   
           <div class="col-sm-12 col-md-6  col-lg-2">
             <b>INE: </b> <br>
-            <a href="#">INE</a>
+            <a href="{{Storage::url($contratista->ine)}}">INE</a>
           </div>
   
   
           <div class="col-sm-12 col-md-6  col-lg-2">
             <b>DC3: </b> <br>
-            <a href="#">DC3</a>
+            <a href="{{Storage::url($contratista->dc3)}}">DC3</a>
           </div>
   
           <div class="col-sm-12 col-md-6 col-lg-1 text-center">
@@ -68,14 +70,18 @@
           <div class="col-sm-12 col-md-6 col-lg-1 text-center">
             <small class="fw-bold">AUTORIZAR:</small> <br>
             <a href="#" class="btn btn-success btn-sm w-100  p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#autorizar">
-            <i class="fa fa-circle-check mx-2"></i>
+              <i class="fa fa-circle-check mx-2"></i>
             </a>
           </div>
-  
-  
+          
+          
         </div>
-    </div>
+        
+      </div>
   
+      @empty
+          
+      @endforelse
   
   
   

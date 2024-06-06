@@ -13,7 +13,7 @@ class contratistasController extends Controller
     public function showFormContratista(){
 
         $empresas = DB::select("SELECT * FROM empresas");
-        return view('admin.empresas_agregar', compact('empresas'));
+        return view('encargado.empresas_agregar', compact('empresas'));
 
     }
 
@@ -150,6 +150,20 @@ class contratistasController extends Controller
         $contratista = Contratista::findOrFail($id);
         $contratista->delete();
         return back()->with('eliminado', 'El trabajador fue eliminado');
+
+    }
+
+
+    public function ver_empresa($id){
+
+        $empresa = DB::select("SELECT*FROM empresas WHERE id LIKE $id");
+        $contratistas = DB::select("SELECT*FROM contratistas WHERE id_empresa LIKE $id");
+
+
+
+        return view('encargado.trabajadores_empresas_contratistas', compact('empresa', 'contratistas'));
+
+
 
     }
 

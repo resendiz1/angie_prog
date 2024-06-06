@@ -1,22 +1,16 @@
 @extends('plantilla')
 @section('contenido')
-    
+  
 
 
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
     <!-- Start your project here-->
-    <div class="container mt-5">
+    <div class="container-fluid mt-0 p-5  fondo-login">
         <div class="row mt-5 justify-content-center">
       
-          <div class="col-4 bg-white shadow shadow-sm mt-5 border p-5 text-center sombra-filas">
+          <div class="col-5 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
             <h4 class=" text-center mb-3">Inicio de Sesión</h4>
-            <img src="img/angie.png" id="logo" class="img-fluid mb-5 animate__animated " style="width: 100px; height: 100px;" alt="">
-             <br>
+            <img src="img/angie.png" id="logo" class="img-fluid mb-3 animate__animated " style="width: 100px; height: 100px;" alt="">
+          <br>
               @if (session('error_sesion_admin'))
                   <span class="text-center text-danger fw-bold">{{session('error_sesion_admin')}}</span>
               @endif      
@@ -33,8 +27,9 @@
 
             <form method="POST" action="{{route('login')}}">
               @csrf
-              <div data-mdb-input-init class="form-outline mb-4 border">
-                <select class="form-control" name="rol">
+              <small class="text-justify fw-bold" for="">Selecciona tu tipo de usuario </small>
+              <div data-mdb-input-init class="form-outline mb-4">
+                <select class="form-select" name="rol">
                   <option value="encargado">Encargado de SEH</option>
                   <option value="administrador">Admnistrador</option>
                   <option value="empresa">Empresa</option>
@@ -44,13 +39,13 @@
 
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" name="email" id="form1Example1"  class="form-control" />
+                <input type="text" name="email" id="form1Example1"  class="form-control border border-light" />
                 <label class="form-label" for="form1Example1">Correo Electronico</label>
               </div>
             
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" name="password" id="form1Example2" class="form-control" />
+                <input type="password" name="password" id="form1Example2" class="form-control border border-light" />
                 <label class="form-label" for="form1Example2">Contraseña</label>
               </div>
 
@@ -62,9 +57,17 @@
       
           </div>
         </div>
-      </div>
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
       
+      </div> {{-- Aqui termina el container del login --}}
+
       
       
       

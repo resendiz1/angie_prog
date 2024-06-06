@@ -45,6 +45,11 @@
         <i class="fa fa-file"></i>
           Ver SUA / PAGO 
       </a>
+      
+      <button class=" btn btn-info btn-sm py-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#sua">
+        <i class="fa fa-file"></i>
+        Actualizar SUA / Pago 
+      </button>
       @endif
 
 

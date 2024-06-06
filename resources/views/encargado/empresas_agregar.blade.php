@@ -24,156 +24,21 @@
       <div class="col-12 text-center">
         <h4>AGREGAR EMPRESAS CONTRATISTAS</h4>
       </div>
+
+      <div class="col-12 text-center">        
+        <button type="button" class="btn btn-primary" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar_empresa">
+            <i class="fa-regular fa-building mx-2 "></i>
+            Agregar empresas
+        </button>
+      </div>
+
       <div class="text-danger flotante">
         <i class="fa fa-heart animate__animated animate__heartBeat animate__infinite  	infinite fa-5x"></i>
       </div>
     </div>
   
   
-<form action="{{route('empresa.agregar')}}" method="POST">
-      @csrf
 
-    <div class="row border mt-1  p-3 sombra-encabezados">
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Nombre de la empresa: </b>
-            
-            <input 
-              type="text" 
-              name="nombre" 
-              placeholder="empresa"
-              value="{{old('nombre')}}"
-              class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif
-              @if(!$errors->first('nombre')) {{'is-valid'}}@endif  " >
-              {!!$errors->first('nombre', '<small class="text-danger">:message</small>')!!}
-             
-
-        </div>
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Dirección: </b>
-
-            <input 
-              type="text" 
-              name="direccion" 
-              placeholder="dirección de la empresa"
-              value="{{old('direccion')}}"
-              class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif
-              @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
-              {!!$errors->first('direccion', '<small class="text-danger">:message</small>')!!}
-
-        </div>
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Link Google Maps: </b>
-
-            <input 
-              type="text" 
-              name="maps" 
-              placeholder="http://maps...."
-              value="{{old('maps')}}"
-              class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif 
-              @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
-              {!!$errors->first('maps', '<small class="text-danger">:message</small>')!!}
-
-        </div>
-
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Responsable de la empresa: </b>
-
-            <input 
-              type="text" 
-              name="responsable" 
-              placeholder="nombre completo"
-              value="{{old('resposable')}}"
-              class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif  
-               @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
-              {!!$errors->first('responsable', '<small class="text-danger">:message</small>')!!}
-              
-
-        </div>
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Núm. Teléfono: </b>
-            
-            <input 
-              type="text" 
-              name="telefono_responsable" 
-              minlength="10"
-              placeholder="telefono del responsable"
-              value="{{old('telefono_responsable')}}"
-              class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
-              @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >
-              {!!$errors->first('telefono_responsable', '<small class="text-danger">:message</small>')!!}
-
-        </div>
-
-
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-            <b>Correo electrónico: </b>
-
-            <input 
-              type="email" 
-              name="email_responsable" 
-              placeholder="Email"
-              value="{{old('email_responsable')}}"
-              class=" form-control @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
-              @if(!$errors->first('email_responsable'))  {{'is-valid'}}" @endif >
-              {!!$errors->first('email_responsable', '<small class="text-danger" >:message</small>')!!}
-
-        </div>
-
-
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3">
-
-          <div class="row align-items-center">
-            <div class="col-10">
-
-              <b>Contraseña: </b>
-              <input 
-                type="password" 
-                id="password"
-                name="password" 
-                value="{{old('password')}}"
-                class=" form-control @if($errors->first('password')) {{'is-invalid'}}@endif 
-                @if(!$errors->first('password'))    {{'is-valid'}} @endif " >
-                {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
-
-            </div>
-
-            <div class="col-2">
-              <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password mt-4  "></span>
-            </div>
-
-          </div>
-
-
-        </div>
-
-
-        <div class="col-sm-12 col-md-6 col-lg-3 mt-4 ">
-            <button class="btn btn-success w-100">
-              Agregar
-            </button>
-        </div>
-      </div>
-</form>
-  
   
 
 
@@ -196,7 +61,9 @@
   
             <div class="col-12">
                 <b>Nombre: </b> <br>
-                <small>{{$empresa->nombre}}</small>
+
+                <a href="{{route('trabajadores.empresas.contratistas', $empresa->id)}}">{{$empresa->nombre}}</a>
+
             </div>
     
             <div class="col-12 mt-2">
@@ -394,26 +261,175 @@
   
   
   
-  
-  <!-- AQUI ESTAN TODOS LOS MODALES -->
-  <div class="container">
-    <div class="row">
-      
-  
+
 
   
-  
-  
-  
-  
-  
-  
-  
-  
+  <!-- AQUI ESTAN TODOS LOS MODALES -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="agregar_empresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Agregar Empresa</h5>
+        <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+
+
+        <form action="{{route('empresa.agregar')}}" method="POST">
+          @csrf
+    
+        
+          <div class="row border mt-1  p-3 sombra-encabezados">
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Nombre de la empresa: </b>
+                
+                <input 
+                  type="text" 
+                  name="nombre" 
+                  placeholder="empresa"
+                  value="{{old('nombre')}}"
+                  class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif
+                  @if(!$errors->first('nombre')) {{'is-valid'}}@endif  " >
+                  {!!$errors->first('nombre', '<small class="text-danger">:message</small>')!!}
+                 
+    
+            </div>
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Dirección: </b>
+    
+                <input 
+                  type="text" 
+                  name="direccion" 
+                  placeholder="dirección de la empresa"
+                  value="{{old('direccion')}}"
+                  class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif
+                  @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
+                  {!!$errors->first('direccion', '<small class="text-danger">:message</small>')!!}
+    
+            </div>
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Link Google Maps: </b>
+    
+                <input 
+                  type="text" 
+                  name="maps" 
+                  placeholder="http://maps...."
+                  value="{{old('maps')}}"
+                  class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif 
+                  @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
+                  {!!$errors->first('maps', '<small class="text-danger">:message</small>')!!}
+    
+            </div>
+    
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Responsable de la empresa: </b>
+    
+                <input 
+                  type="text" 
+                  name="responsable" 
+                  placeholder="nombre completo"
+                  value="{{old('resposable')}}"
+                  class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif  
+                   @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
+                  {!!$errors->first('responsable', '<small class="text-danger">:message</small>')!!}
+                  
+    
+            </div>
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Núm. Teléfono: </b>
+                
+                <input 
+                  type="text" 
+                  name="telefono_responsable" 
+                  minlength="10"
+                  placeholder="telefono del responsable"
+                  value="{{old('telefono_responsable')}}"
+                  class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
+                  @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >
+                  {!!$errors->first('telefono_responsable', '<small class="text-danger">:message</small>')!!}
+    
+            </div>
+    
+    
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+                <b>Correo electrónico: </b>
+    
+                <input 
+                  type="email" 
+                  name="email_responsable" 
+                  placeholder="Email"
+                  value="{{old('email_responsable')}}"
+                  class=" form-control @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
+                  @if(!$errors->first('email_responsable'))  {{'is-valid'}}" @endif >
+                  {!!$errors->first('email_responsable', '<small class="text-danger" >:message</small>')!!}
+    
+            </div>
+    
+    
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6">
+    
+              <div class="row align-items-center">
+                <div class="col-10">
+    
+                  <b>Contraseña: </b>
+                  <input 
+                    type="password" 
+                    id="password"
+                    name="password" 
+                    value="{{old('password')}}"
+                    class=" form-control @if($errors->first('password')) {{'is-invalid'}}@endif 
+                    @if(!$errors->first('password'))    {{'is-valid'}} @endif " >
+                    {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
+    
+                </div>
+    
+                <div class="col-2">
+                  <span toggle="#password" class="fa fa-fw fa-eye field-icon toggle-password mt-4  "></span>
+                </div>
+    
+              </div>
+    
+    
+            </div>
+    
+    
+            <div class="col-sm-12 col-md-12 col-lg-6 mt-4 ">
+                <button class="btn btn-success w-100">
+                  Agregar
+                </button>
+            </div>
+          </div>
+        </form>
+      
+
+
+
+      </div>
     </div>
   </div>
-  
-  
+</div>  
   <!-- AQUI ESTAN TODOS LOS MODALES -->
   
 
