@@ -77,19 +77,22 @@
         <small>{{$contratista->nombre_completo}}</small>
       </div>
 
-      <div class="col-2">
+      <div class="col-2 text-center">
         <b>NSS: </b> <br>
-        <a href="{{Storage::url($contratista->nss)}}" target="_blank">NSS</a>
+        <a href="{{Storage::url($contratista->nss)}}" target="_blank">
+          <i class="fa fa-eye"></i>
+        </a>
+
       </div>
       
 
-      <div class="col-2">
+      <div class="col-2 text-center">
         <b>INE: </b> <br>
         <a href="{{Storage::url($contratista->ine)}}" target="_blank">INE</a>
       </div>
 
 
-      <div class="col-2">
+      <div class="col-2 text-center">
         <b>DC3: </b> <br>
         <a href="{{Storage::url($contratista->dc3)}}" target="_blank">DC3</a>
       </div>

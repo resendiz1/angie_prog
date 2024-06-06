@@ -18,7 +18,7 @@
 </div>   
 @endif
 
-<div class="container bg-white mt-1 p-5 sombra-contenedor ">
+<div class="container bg-white mt-3 p-5 sombra-contenedor ">
 
     <div class="row border p-3 justify-content-center sombra-encabezados">
       <div class="col-12 text-center">
@@ -47,9 +47,9 @@
 
   
   {{-- Tarjetas con la información de los contratistas --}}
-    <div class="row mt-2 border py-5 px-3 shadow justify-content-center">  
+    <div class="row mt-4 justify-content-center">  
       <div class="col-12 bg-dark text-white text-center">
-        <h3>EMPRESAS</h3>
+        <h3 class="mt-2">EMPRESAS</h3>
       </div>
   
 @forelse ($empresas as $empresa)
@@ -59,11 +59,8 @@
 
           <div class="row">
   
-            <div class="col-12">
-                <b>Nombre: </b> <br>
-
-                <a href="{{route('trabajadores.empresas.contratistas', $empresa->id)}}">{{$empresa->nombre}}</a>
-
+            <div class="col-12 text-center mb-2">
+                  <a class="fw-bold" href="{{route('trabajadores.empresas.contratistas', $empresa->id)}}">{{$empresa->nombre}}</a>
             </div>
     
             <div class="col-12 mt-2">
@@ -91,14 +88,14 @@
             
             <div class="col-6 text-center mt-1">
                 <small class="fw-bold">ELIMINAR: </small> <br> 
-                <a href="#" class="btn btn-danger btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$empresa->id}}">
+                <a href="#" class="btn btn-danger border btn-rounded btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$empresa->id}}">
                 <i class="fa fa-eraser mx-2"></i>
                 </a>
             </div>
     
             <div class="col-6 text-center mt-1">
                 <small class="fw-bold">EDITAR: </small> <br> 
-                <a href="#" class="btn btn-primary btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#edit{{$empresa->id}}">
+                <a href="#" class="btn btn-primary border btn-rounded btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#edit{{$empresa->id}}">
                 <i class="fa fa-edit mx-2"></i>
                 </a>
             </div>
@@ -271,8 +268,8 @@
 <div class="modal fade" id="agregar_empresa" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-lg">
     <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Agregar Empresa</h5>
+      <div class="modal-header bg-primary text-white">
+        <h4 class="modal-title" id="exampleModalLabel">Agregar Empresa</h4>
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
@@ -282,7 +279,7 @@
           @csrf
     
         
-          <div class="row border mt-1  p-3 sombra-encabezados">
+          <div class="row  mt-1  p-3 ">
     
     
             <div class="col-sm-12 col-md-12 col-lg-6">
@@ -291,7 +288,7 @@
                 <input 
                   type="text" 
                   name="nombre" 
-                  placeholder="empresa"
+                  placeholder="Empresa"
                   value="{{old('nombre')}}"
                   class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif
                   @if(!$errors->first('nombre')) {{'is-valid'}}@endif  " >
@@ -308,7 +305,7 @@
                 <input 
                   type="text" 
                   name="direccion" 
-                  placeholder="dirección de la empresa"
+                  placeholder="Dirección de la empresa"
                   value="{{old('direccion')}}"
                   class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif
                   @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
@@ -328,7 +325,7 @@
                   value="{{old('maps')}}"
                   class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif 
                   @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
-                  {!!$errors->first('maps', '<small class="text-danger">:message</small>')!!}
+                  {!!$errors->first('maps', '<small class="text-danger mt-0">:message</small>')!!}
     
             </div>
     
@@ -341,7 +338,7 @@
                 <input 
                   type="text" 
                   name="responsable" 
-                  placeholder="nombre completo"
+                  placeholder="Nombre completo"
                   value="{{old('resposable')}}"
                   class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif  
                    @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
@@ -359,7 +356,7 @@
                   type="text" 
                   name="telefono_responsable" 
                   minlength="10"
-                  placeholder="telefono del responsable"
+                  placeholder="Teléfono del responsable"
                   value="{{old('telefono_responsable')}}"
                   class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
                   @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >

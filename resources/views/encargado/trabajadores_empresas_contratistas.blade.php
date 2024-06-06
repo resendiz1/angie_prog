@@ -10,10 +10,12 @@
         <h4>CONTRATISTAS DE LA EMPRESA: <br> {{$empresa[0]->nombre}}</h4>
       </div>
       <div class="col-auto mx-2">
-        <a href="{{Storage::url($empresa[0]->sua)}}" class="btn btn-success btn-sm">
+
+        <a href="{{Storage::url($empresa[0]->sua)}}" target="_blank" class="btn btn-success btn-sm">
           <i class="fa fa-magnifying-glass"></i>
           VER SUA / PAGO
         </a>
+
       </div>
     </div>
   
@@ -36,7 +38,7 @@
       
   <div class="row justify-content-center mt-5 border p-3 sombra-filas animate__animated animate__bounceIn">      
     
-    <div class="row">
+    <div class="row ">
   
           <div class="col-sm-6 col-md-6  col-lg-3 ">
             <b>Nombre: </b> <br>
@@ -80,7 +82,7 @@
       </div>
   
       @empty
-          
+          <li class="mt-4">No hay registros</li>
       @endforelse
   
   

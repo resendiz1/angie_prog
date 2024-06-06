@@ -7,7 +7,7 @@
     <div class="container-fluid mt-0 p-5  fondo-login">
         <div class="row mt-5 justify-content-center">
       
-          <div class="col-5 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
+          <div class="col-3 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
             <h4 class=" text-center mb-3">Inicio de Sesión</h4>
             <img src="img/angie.png" id="logo" class="img-fluid mb-3 animate__animated " style="width: 100px; height: 100px;" alt="">
           <br>
@@ -58,6 +58,27 @@
           </div>
         </div>
 
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 <br>
 <br>
