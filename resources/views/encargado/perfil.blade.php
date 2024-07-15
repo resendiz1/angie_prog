@@ -26,7 +26,7 @@
                     </div>
 
                     <div class="col-sm-12 col-md-12 col-lg-5  p-2 mb-0 " >
-                        <a  class="btn btn-primary" href="{{route('show.contratistas')}}" style="color:white;">
+                        <a  class="btn btn-primary" href="{{route('ver.empresas')}}" style="color:white;">
                             <i class="fa fa-eye fa-2x"></i>
                             <h6 class="mt-2">Contratistas Autorizados</h6>
                         </a>

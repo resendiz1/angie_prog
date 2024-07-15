@@ -1,13 +1,12 @@
-@extends('plantilla')
+@extends('plantilla')   
 @section('contenido')
-@include('assets.nav')    
 
 
 
-<div class="container bg-white mt-5 p-5 border sombra-contenedor"> <!-- Este DIV cierra todo el documento -->
+<div class="container bg-white mt-5 p-5 border sombra-contenedor p-5 "> <!-- Este DIV cierra todo el documento -->
 
 
-    <div class="row justify-content-center border p-3 sombra-encabezados">
+    <div class="row justify-content-center border p-3 sombra-encabezados bg-white">
   
       <!-- <div class="col-4"></div> -->
   
@@ -28,7 +27,7 @@
   
   
       <div class="col-1 mb-2">
-        <button class=" btn btn-success btn-sm py-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
+        <button class=" btn btn-success btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#exampleModal">
           <i class=" fa fa-user-plus"></i>
         </button>
       </div>
@@ -70,7 +69,7 @@
 
 @forelse ($contratistas as $contratista)
         
-    <div class="row justify-content-center mt-4 border p-3 sombra-filas">
+    <div class="row justify-content-center mt-4 border p-3 sombra-filas bg-white">
   
       <div class="col-2">
         <b>Nombre: </b> <br>
@@ -273,7 +272,7 @@
   
   
     
-  
+
   </div>
   <!-- Este DIV cierra todo el documento -->
   

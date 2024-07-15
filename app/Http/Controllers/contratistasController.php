@@ -163,9 +163,35 @@ class contratistasController extends Controller
 
         return view('encargado.trabajadores_empresas_contratistas', compact('empresa', 'contratistas'));
 
+    }
 
+
+    public function ver_empresas(){
+        $empresas = DB::select("SELECT*FROM empresas");
+        return view('encargado.empresas_ver', compact('empresas'));
+    }
+
+
+    public function autorizar_contratista($id){
+        
+        $contratista = Contratista::findOrFail($id);
+        $contratista->autorizado_entrar = 1;
+        $contratista->save();
+
+        return back()->with('autorizado','El contratista ahora esta autorizado!' );
+    }
+
+    public function desautorizar_contratista($id){
+
+        $contratista = Contratista::findOrFail($id);
+        $contratista->autorizado_entrar = 0;
+        $contratista->save();
+
+        return back()->with('Desautorizado', 'El contratista fue desautorizado');
 
     }
+
+
 
 
 

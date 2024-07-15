@@ -38,6 +38,13 @@ Route::get('/encargado/empresas_contratistas/{id}/trabajadores', [contratistasCo
 
 Route::view('/agregar_empresas', 'admin.empresas_agregar')->name('empresas.agregar')->middleware('auth');
 
+Route::delete('/encargado/{id}/trabajador_borrado', [contratistasController::class, 'delete_contratista'])->name('delete.contratista.encargado')->middleware('auth:encargado');
+
+Route::patch('/encargado/empresas_contratistas/autorizando/{id}', [contratistasController::class, 'autorizar_contratista'])->name('autoriza.contratista')->middleware('auth:encargado');
+
+Route::patch('/encargado/empresas_contratistas/desautorizando/{id}', [contratistasController::class, 'desautorizar_contratista'])->name('desautorizar.contratista')->middleware('auth:encargado');
+
+Route::get('/encargado/empresas_ver', [contratistasController::class, 'ver_empresas'])->name('ver.empresas');
 
 
 

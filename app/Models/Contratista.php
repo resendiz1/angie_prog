@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Contratista extends Model
 {
     use HasFactory;
+    protected $fillable = [];
 }

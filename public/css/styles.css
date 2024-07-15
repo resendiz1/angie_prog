@@ -85,3 +85,13 @@ body{
     width: 100%;
 }
 
+
+.desautorizado{
+
+    background-color: rgba(128, 128, 128, 0.1902); /* Gris con 50% de transparencia */
+    color: white; /* Color del texto dentro del div */
+    padding: 20px; /* Espaciado interno */
+    border-radius: 10px; /* Esquinas redondeadas */
+    color: black;
+
+}
