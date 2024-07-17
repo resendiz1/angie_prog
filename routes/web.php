@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\contratistasController;
+use App\Http\Controllers\extintoresController;
 use App\Http\Controllers\sesionesController;
 use Illuminate\Support\Facades\Route;
 
@@ -44,8 +45,9 @@ Route::patch('/encargado/empresas_contratistas/autorizando/{id}', [contratistasC
 
 Route::patch('/encargado/empresas_contratistas/desautorizando/{id}', [contratistasController::class, 'desautorizar_contratista'])->name('desautorizar.contratista')->middleware('auth:encargado');
 
-Route::get('/encargado/empresas_ver', [contratistasController::class, 'ver_empresas'])->name('ver.empresas');
+Route::get('/encargado/empresas_ver', [contratistasController::class, 'ver_empresas'])->name('ver.empresas')->middleware('auth:encargado');
 
+Route::get('/encargado/extintores', [extintoresController::class, 'menu_extintores'])->name('menu.extintores')->middleware('auth:encargado');
 
 
 

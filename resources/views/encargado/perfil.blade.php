@@ -53,7 +53,7 @@
                 <div class="row mt-5 py-5 justify-content-center"  >
 
                     <div class="col-sm-12 col-md-12 col-lg-5  p-2 mb-0 " >
-                        <a  class="btn btn-danger" href="#" style="color:white;">
+                        <a  class="btn btn-danger" href="{{route('menu.extintores')}}" style="color:white;">
                             <i class="fa-solid fa-fire-extinguisher fa-2x"></i>
                             <h6 class="mt-2">Gestionar Extintores</h6>
                         </a>

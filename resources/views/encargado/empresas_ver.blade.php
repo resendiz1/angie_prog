@@ -3,22 +3,7 @@
 @include('assets.nav')
 
 
-<!-- NOTIFICACIONES -->
-@if (session('eliminado'))
-<div class="bg-danger text-white notificacion p-3 text-center">
-  <span class=" fw-bold"> {!!session('eliminado')!!} </span> <br> 
-  <i class="fa fa-trash fa-2x animate__animated animate__wobble animate__infinite mt-2"></i>
-</div>   
-@endif
-
-@if (session('editado'))
-<div class="bg-success text-white notificacion p-3 text-center">
-  <span class=" fw-bold"> {!!session('editado')!!} </span> <br> 
-  <i class="fa fa-edit fa-2x animate__animated animate__wobble animate__infinite mt-2"></i>
-</div>   
-@endif
-
-<div class="container bg-white mt-3 sombra-contenedor " style="height: 3000px">
+<div class="container bg-white mt-3 sombra-contenedor " style="height: 2000px">
 
   
   {{-- Tarjetas con la información de los contratistas --}}
@@ -80,16 +65,6 @@
       <!-- Modal m google maps -->
 
 
-
-
-
-
-
-
-
-
-
-
 @empty
 <li>No hay registros</li>
       
@@ -111,25 +86,6 @@
   
   
   
-  
-
-
-  
-  <!-- AQUI ESTAN TODOS LOS MODALES -->
-
-
-
-  
-
-
-
-
-
-
-
-  {{-- SCRIPTS --}}
-
-
 
 
     
