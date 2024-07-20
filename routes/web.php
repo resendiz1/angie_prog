@@ -48,6 +48,7 @@ Route::patch('/encargado/empresas_contratistas/desautorizando/{id}', [contratist
 Route::get('/encargado/empresas_ver', [contratistasController::class, 'ver_empresas'])->name('ver.empresas')->middleware('auth:encargado');
 
 Route::get('/encargado/extintores', [extintoresController::class, 'menu_extintores'])->name('menu.extintores')->middleware('auth:encargado');
+Route::post('/encargado/extintores/agregar', [extintoresController::class, 'agregar_extintor'])->name('agregar.extintor');
 
 
 
