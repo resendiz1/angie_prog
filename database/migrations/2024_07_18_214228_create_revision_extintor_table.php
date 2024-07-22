@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('holograma');
             $table->text('observaciones');
             $table->timestamps();
+
+            $table->foreign('extintor_id')->references('id')->on('extintores')->onDelete('cascade');
         });
     }
 
