@@ -69,7 +69,7 @@ class extintoresController extends Controller
         $extintor->letrero = request('letrero');
         $extintor->fecha_fabricacion = request('fecha_fabricacion');
         $extintor->vencimiento_antiguedad = request('vencimiento_antiguedad');
-        $extintor->estado_actual = request('estado_actual');
+        $extintor->estado_actual = request('estado');
         $extintor->observaciones = request('observaciones');
         $extintor->foto1 = $foto1;
         $extintor->foto2 = $foto2;
@@ -100,15 +100,23 @@ class extintoresController extends Controller
 
     public function editar_extintor($id){
         
+        request()->validate([
 
-        // request()->validate([
+            'numero' => 'required',
+            'planta' => 'required', //La planta se saca de la informacion de inicio de los usuarios
+            'ubicacion' => 'required',
+            'agente_extintor' => 'required',
+            'capacidad' => 'required',
+            'tipo' => 'required',
+            'letrero' => 'required',
+            'fecha_fabricacion' => 'required',
+            'vencimiento_antiguedad' => 'required',
+            'estado' => 'required',
+            'foto1' => 'max:4096',
+            'foto2' => 'max:4096',
+            'foto3' => 'max:4096'
 
-        //     'foto1' => 'max:4096',
-        //     'foto2' => 'max:4096',
-        //     'foto3' => 'max:4096'
-
-        // ]);
-
+        ]);
 
 
 
@@ -139,7 +147,7 @@ class extintoresController extends Controller
         $extintor->letrero = request('letrero');
         $extintor->fecha_fabricacion = request('fecha_fabricacion');
         $extintor->vencimiento_antiguedad = request('vencimiento_antiguedad');
-        $extintor->estado_actual = request('estado_actual');
+        $extintor->estado_actual = request('estado');
         $extintor->observaciones = request('observaciones');
         // $extintor->foto1 = $foto1;
         // $extintor->foto2 = $foto2;
@@ -149,6 +157,38 @@ class extintoresController extends Controller
 
         return back()->with('actualizado', 'El extintor fue actualizado');
 
+
+
+    }
+
+
+    public function mantenimiento_extintor($id){
+
+
+        $extintor = Extintor::findOrFail($id);
+
+        $extintor->ultimo_mantenimiento = request('ultimo_mantenimiento');
+        $extintor->proximo_mantenimiento = request('proximo_mantenimiento');
+
+        $extintor->update();
+
+        return back()->with("mantenimiento", "Las fechas de mantenimiento del extintor $id fueron actualizadas");
+
+    }
+
+
+    public function recarga_extintor($id){
+
+
+        $extintor = Extintor::findOrFail($id);
+
+        $extintor->ultima_recarga = request('ultima_recarga');
+        $extintor->proxima_recarga = request('proxima_recarga');
+
+        $extintor->update();
+
+
+        return back()->with("recarga", "Se actualizaron las fechas de recarga del extintor $id");
 
 
     }

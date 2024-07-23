@@ -48,10 +48,10 @@ Route::patch('/encargado/empresas_contratistas/desautorizando/{id}', [contratist
 Route::get('/encargado/empresas_ver', [contratistasController::class, 'ver_empresas'])->name('ver.empresas')->middleware('auth:encargado');
 
 Route::get('/encargado/extintores', [extintoresController::class, 'menu_extintores'])->name('menu.extintores')->middleware('auth:encargado');
-Route::post('/encargado/extintores/agregar', [extintoresController::class, 'agregar_extintor'])->name('agregar.extintor')->middleware('auth::encargado');
+Route::post('/encargado/extintores/agregar', [extintoresController::class, 'agregar_extintor'])->name('agregar.extintor')->middleware('auth:encargado');
 Route::delete('/encargado/extintores/{id}/eliminar', [extintoresController::class, 'eliminar_extintor'])->name('eliminar.extintor')->middleware('auth:encargado');
 Route::patch('/encargado/extintores/{id}/editar', [extintoresController::class, 'editar_extintor'])->name('editar.extintor')->middleware('auth:encargado');
-
+Route::patch('/encargado/extintores/{id}/mantenimiento', [extintoresController::class, 'mantenimiento_extintor'])->name('mantenimiento.extintor')->middleware('auth:encargado');Route::patch('/encargado/extintores/{id}/relleno', [extintoresController::class, 'recarga_extintor'])->name('recarga.extintor')->middleware('auth:encargado');
 
 
 
