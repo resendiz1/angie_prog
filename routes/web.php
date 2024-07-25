@@ -53,7 +53,7 @@ Route::delete('/encargado/extintores/{id}/eliminar', [extintoresController::clas
 Route::patch('/encargado/extintores/{id}/editar', [extintoresController::class, 'editar_extintor'])->name('editar.extintor')->middleware('auth:encargado');
 Route::patch('/encargado/extintores/{id}/mantenimiento', [extintoresController::class, 'mantenimiento_extintor'])->name('mantenimiento.extintor')->middleware('auth:encargado');Route::patch('/encargado/extintores/{id}/relleno', [extintoresController::class, 'recarga_extintor'])->name('recarga.extintor')->middleware('auth:encargado');
 Route::get('/encargado/extintores/{id}/detalle', [extintoresController::class, 'detalle_extintor'])->name('detalle.extintor')->middleware('auth:encargado');
-Route::post('/encargado/extintores/busqueda', [extintoresController::class, 'buscar_extintor'])->name('buscar.extintor')->middleware('auth:encargado');
+Route::post('/encargado/extintores/', [extintoresController::class, 'buscar_extintor'])->name('buscar.extintor')->middleware('auth:encargado');
 
 
 

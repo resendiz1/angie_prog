@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Extintor;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 
 
@@ -14,7 +15,7 @@ class extintoresController extends Controller
     
     public function menu_extintores(){
 
-        $extintores = Extintor::simplePaginate(6);
+        $extintores = DB::table('extintores')->orderBy('updated_at', 'desc')->orderBy('created_at', 'asc')->simplePaginate(6);
         return view('encargado.extintores.extintores_menu', compact('extintores'));
 
     }
@@ -95,12 +96,12 @@ class extintoresController extends Controller
     }
 
 
-    public function editar_extintor($id){
+    public function editar_extintor(Extintor $id){
 
         //dando de alta variables :p 
-        $foto1='';
-        $foto2='';
-        $foto3='';
+        $foto1= $id->foto1;
+        $foto2= $id->foto2;
+        $foto3= $id->foto3;
         
         request()->validate([
 
@@ -138,30 +139,30 @@ class extintoresController extends Controller
 
 
         
-        $extintor = Extintor::findOrFail($id);
 
-        $extintor->numero = request('numero');
-        $extintor->planta = request('planta');
-        $extintor->ubicacion = request('ubicacion');
-        $extintor->agente_extintor = request('agente_extintor');
-        $extintor->capacidad = request('capacidad');
-        $extintor->tipo = request('tipo');
-        $extintor->ultima_recarga = request('ultima_recarga');
-        $extintor->proxima_recarga= request('proxima_recarga');
-        $extintor->ultimo_mantenimiento = request('ultimo_mantenimiento');
-        $extintor->proximo_mantenimiento = request('proximo_mantenimiento');
-        $extintor->ultima_prueba = request('ultima_prueba');
-        $extintor->proxima_prueba = request('proxima_prueba');
-        $extintor->letrero = request('letrero');
-        $extintor->fecha_fabricacion = request('fecha_fabricacion');
-        $extintor->vencimiento_antiguedad = request('vencimiento_antiguedad');
-        $extintor->estado_actual = request('estado');
-        $extintor->observaciones = request('observaciones');
-        $extintor->foto1 = $foto1;
-        $extintor->foto2 = $foto2;
-        $extintor->foto3 = $foto3;
 
-        $extintor->update();
+        $id->numero = request('numero');
+        $id->planta = request('planta');
+        $id->ubicacion = request('ubicacion');
+        $id->agente_extintor = request('agente_extintor');
+        $id->capacidad = request('capacidad');
+        $id->tipo = request('tipo');
+        $id->ultima_recarga = request('ultima_recarga');
+        $id->proxima_recarga= request('proxima_recarga');
+        $id->ultimo_mantenimiento = request('ultimo_mantenimiento');
+        $id->proximo_mantenimiento = request('proximo_mantenimiento');
+        $id->ultima_prueba = request('ultima_prueba');
+        $id->proxima_prueba = request('proxima_prueba');
+        $id->letrero = request('letrero');
+        $id->fecha_fabricacion = request('fecha_fabricacion');
+        $id->vencimiento_antiguedad = request('vencimiento_antiguedad');
+        $id->estado_actual = request('estado');
+        $id->observaciones = request('observaciones');
+        $id->foto1 = $foto1;
+        $id->foto2 = $foto2;
+        $id->foto3 = $foto3;
+
+        $id->update();
 
         return back()->with('actualizado', 'El extintor fue actualizado');
 
@@ -196,7 +197,7 @@ class extintoresController extends Controller
         $extintor->update();
 
 
-        return back()->with("recarga", "Se actualizaron las fechas de recarga del extintor $id");
+        return back()->with("recarga", "Se actualizaron las fechas de recarga del extintor $extintor->numero");
 
 
     }
@@ -210,9 +211,10 @@ class extintoresController extends Controller
 
     public function buscar_extintor(){
 
-        return request();
+        $consulta = request('query');
+        $extintores = DB::table('extintores')->where('ubicacion', 'LIKE', "%{$consulta}%")->orWhere('agente_extintor', 'LIKE', "%{$consulta}%")->simplePaginate(6);
 
-
+        return view('encargado.extintores.extintores_menu', compact('extintores'));
 
 
     }

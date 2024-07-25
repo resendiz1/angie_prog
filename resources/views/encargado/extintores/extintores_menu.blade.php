@@ -19,10 +19,10 @@
             <div class="row">
 
                 
-                <div class="col-sm-4 col-md-4 col-lg-2">
+                <div class="col-sm-4 col-md-4 col-lg-3">
                     <form action="{{route('buscar.extintor')}}" method="POST">
                         @csrf
-                     <input type="search" name="query" class="form-control">
+                     <input type="search" placeholder="Agente extintor o ubicación" name="query" class="form-control">
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-1 mb-3">
                     <button class="btn btn-success btn-sm mt-1 w-100">
@@ -32,7 +32,7 @@
                 </div>
 
 
-               <div class="col-sm-12 col-md-12 col-lg-7 text-center">
+               <div class="col-sm-12 col-md-12 col-lg-6 text-center">
                     @if ($errors->any())
                         <strong class="text-danger">Errores al llenar formulario: </strong>
                         @foreach ($errors->all() as $error)
@@ -151,7 +151,7 @@
         </div>  {{-- all card extintores --}}       
 
         @empty
-            <li>No hay extintores</li>
+            <li>No hay resultados</li>
         @endforelse
 
     </div>
