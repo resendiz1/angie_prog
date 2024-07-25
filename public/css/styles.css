@@ -17,7 +17,7 @@ body{
 
 
 .sombra-encabezados{
-    box-shadow: 2px 2px 2px 2px rgba(0,0,0,0.22);
+    box-shadow: 4px 2px 2px 2px rgba(0,0,0,0.22);
 }
 
 .sombra-contenedor{
@@ -95,3 +95,28 @@ body{
     color: black;
 
 }
+
+
+/* CAROUSEL DE LOS EXTINTORES  */
+
+.slick-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.slick-slide img {
+    width: 100%;
+    height: 200px;
+    display: block;
+}
+
+.slider-container {
+    width: 100%;
+    margin: auto;
+    justify-content: center;
+    align-items: center;
+
+}
+
+/* CAROUSEL DE LOS EXTINTORES  */

@@ -6,7 +6,7 @@
     
 
 
-    <div class="row mt-4 justify-content-center bg-danger sombra-encabezados text-white text-center">  
+    <div class="row mt-4 justify-content-center bg-danger sombra-encabezados text-white text-center border border-light">  
 
         <div class="col-12">
           <h3 class="mt-2">EXTINTORES</h3>
@@ -14,20 +14,25 @@
         </div>
     </div>
 
-    <div class="row mt-4 sombra-encabezados p-3">
+    <div class="row mt-4 sombra-encabezados p-3 border">
         <div class="col-12">
             <div class="row">
-                <div class="col-2">
-                     <input type="search" class="form-control">
+
+                
+                <div class="col-sm-4 col-md-4 col-lg-2">
+                    <form action="{{route('buscar.extintor')}}" method="POST">
+                        @csrf
+                     <input type="search" name="query" class="form-control">
                 </div>
-                <div class="col-1">
-                    <button class="btn btn-success btn-sm mt-1">
+                <div class="col-sm-12 col-md-4 col-lg-1 mb-3">
+                    <button class="btn btn-success btn-sm mt-1 w-100">
                         <i class="fa fa-search"></i>
                     </button>
+                    </form>
                 </div>
 
 
-               <div class="col-7 text-center">
+               <div class="col-sm-12 col-md-12 col-lg-7 text-center">
                     @if ($errors->any())
                         <strong class="text-danger">Errores al llenar formulario: </strong>
                         @foreach ($errors->all() as $error)
@@ -38,8 +43,9 @@
 
 
 
-               <div class="col-1">
-                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-success btn-sm mt-1">
+               <div class="col-sm-12 col-md-6 col-lg-1">
+                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-danger btn-sm mt-1 w-100">
+                    <i class="fa-solid fa-charging-station"></i>
                     <i class="fa fa-plus"></i>
                 </a>
                </div>
@@ -48,70 +54,115 @@
     </div>
 
 
-    <div class="row border my-4 p-3 d-flex justify-content-center" style="max-height: 1000px; overflow-y: scroll;">
+    <div class="row border border-3  my-4 p-5 d-flex justify-content-center" >
+
+        <div class="col-12 text-center mb-4">
+               <strong class="h5 fw-bold" style="text-decoration: underline"> Pagina: {{ $extintores->currentPage() }}  </strong>
+
+        </div>
 
         @forelse ($extintores as $extintor)
-        <div class="col-3  sombra-encabezados m-4 p-2">  {{-- all card extintores --}}
+        <div class="col-sm-12 col-md-6 col-lg-3  sombra-encabezados p-2 border mx-3 my-2">  {{-- all card extintores --}}
 
             {{-- Este es el row de los datos de la tarjeta del extintor --}}
             <div class="row">
-                <div class="col-12 text-center my-2">
-                    <strong class="h5">{{$extintor->numero}}</strong>
+
+                <div class="col-3 text-center my-2">
+                    <strong class="h5"> #{{$extintor->numero}}</strong>
                 </div>
-                <div class="col-12">
-                    <i class="fa fa-flask"></i>
+
+             <div class="col-9 text-end mt-2">    {{-- Todo el dropdown de las opciones  --}}
+                    <button class="btn btn-light btn-sm dropdown-toggle  " type="button" id="dropdownMenuButton" data-mdb-dropdown-init data-mdb-ripple-init aria-expanded="false">
+                    <i class="fa fa-bars"></i>
+                  </button>
+  
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <li>
+                      <a class="dropdown-item" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#el{{$extintor->id}}">
+                          <i class="fa fa-trash mx-2"></i>
+                          Eliminar
+                      </a>
+                    </li>
+                    <li>
+                      <a class="dropdown-item" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#ed{{$extintor->id}}">
+                          <i class="fa-regular fa-pen-to-square mx-2"></i>
+                          Actualizar
+                      </a>
+                     </li>
+                     <li>
+                      <a class="dropdown-item" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#ma{{$extintor->id}}">
+                          <i class="fa fa-gear mx-2"></i>
+                          Registrar mantenimiento
+                      </a>
+                     </li>
+                     <li>
+                      <a class="dropdown-item" href="{{route('detalle.extintor', $extintor->id)}}">
+                          <i class="fa fa-eye mx-2"></i>
+                          Detalles
+                      </a>
+                     </li>
+                     <li>
+                      <a class="dropdown-item" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#re{{$extintor->id}}">
+                          <i class="fa-solid fa-charging-station mx-2"></i>
+                          Registrar recarga
+                      </a>
+                     </li>
+                  </ul>
+
+                </div>
+
+
+
+                <hr>
+                <div class="col-12 text-center">
+                    <div class="slider-container">
+                        <div >
+                            <img src="{{Storage::url($extintor->foto1)}}" class="img-fluid" alt="" >
+                        </div>
+                        <div ">
+                            <img src="{{Storage::url($extintor->foto2)}}" class="img-fluid" alt="" >
+                        </div>
+                        <div> 
+                            <img src="{{Storage::url($extintor->foto3)}}" class="img-fluid" alt="" >
+                        </div>
+                    </div>
+                </div>
+                
+
+                <div class="col-12 mt-3">
+                    <i class="fa fa-flask mx-2 "></i>
                     {{$extintor->agente_extintor}}
                 </div>
-                <div class="col-12">
-                    <i class="fa fa-location-dot"></i>
+                <div class="col-12 ">
+                    <i class="fa fa-location-dot mx-2 "></i>
                     {{$extintor->ubicacion}}
                 </div>
                 <div class="col-12">
-                    <i class="fa-solid fa-weight-scale"></i>
-                    {{$extintor->capacidad}}
+                    <i class="fa-solid fa-weight-scale mx-2 "></i>
+                    {{$extintor->capacidad}} Kg
                 </div>
             </div>
+
+            
             {{-- Este es el row de los datos de la tarjeta del extintor --}}
-            <hr>
-            {{-- este es el row de los botoncitos de acciones para los extintores --}}
-            <div class="row d-flex justify-content-start">
-                <div class="col-2 text-center">
-                    <button class="btn btn-danger btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#el{{$extintor->id}}">
-                        <i class="fa fa-trash"></i>
-                    </button>
-                </div>
-                <div class="col-2 text-center">
-                    <button class="btn btn-warning btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#ed{{$extintor->id}}">
-                        <i class="fa fa-edit"></i>
-                    </button>
-                </div>
-                <div class="col-2 text-center">
-                    <button class="btn btn-secondary btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#ma{{$extintor->id}}">
-                        <i class="fa fa-wrench"></i>
-                    </button>
-                </div>
-                <div class="col-2 text-center">
-                    <button class="btn btn-primary btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#de{{$extintor->id}}">
-                        <i class="fa fa-eye"></i>
-                    </button>
-                </div>
-                <div class="col-2 text-center">
-                    <button class="btn btn-dark btn-sm" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#re{{$extintor->id}}">
-                        <i class="fa fa-fill"></i>
-                    </button>
-                </div>
-
-            </div>
-            {{-- este es el row de los botoncitos de acciones para los extintores --}}
 
 
-        </div>  {{-- all card extintores --}}
+
+        </div>  {{-- all card extintores --}}       
 
         @empty
-            
+            <li>No hay extintores</li>
         @endforelse
 
     </div>
+
+
+    <div class="row justify-content-center">
+        <div class="col-3 text-center">
+            <h6>{{$extintores->links()}} </h6>
+        </div>
+    </div>
+
 
 
 
@@ -142,7 +193,7 @@
 
 <!-- Modal registro de extintor  -->
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-xl">
         <div class="modal-content ">
             <div class="modal-header p-2 bg-danger text-white">
                 <h5 class="text-center">Agregar Extintor</h5>
@@ -281,10 +332,10 @@
 
 {{-- Modal que registra el mantenimiento del extintor --}}
 <div class="modal fade" id="ma{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
-        <div class="modal-header bg-secondary">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR MANTENIMIENTO</h5>
+        <div class="modal-header bg-danger text-white fw-bold">
+          <small class="modal-title" id="exampleModalLabel">REGISTRAR MANTENIMIENTO</small>
 
           <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -293,11 +344,11 @@
             @csrf @method('PATCH')
             <div class="form-group my-3">
                 <label for="" class="fw-bold">Fecha del ultimo mantenimiento</label>
-                <input type="date" name="ultimo_mantenimiento" value="{{$modal->ultimo_mantenimiento}}" class="form-control form-control-lg">
+                <input type="date" name="ultimo_mantenimiento" value="{{$modal->ultimo_mantenimiento}}" class="form-control form-control">
             </div>
             <div class="form-group my-3">
                 <label for="" class="fw-bold">Fecha del proximo mantenimiento</label>
-                <input type="date" name="proximo_mantenimiento" value="{{$modal->proximo_mantenimiento}}" class="form-control form-control-lg">
+                <input type="date" name="proximo_mantenimiento" value="{{$modal->proximo_mantenimiento}}" class="form-control form-control">
             </div>
 
             <button  class="btn btn-success w-100 mt-3" >CONFIRMAR</button>
@@ -315,10 +366,10 @@
 
 {{-- Modal que registra el relleno del extintor --}}
 <div class="modal fade" id="re{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md">
+    <div class="modal-dialog modal-sm">
       <div class="modal-content">
         <div class="modal-header bg-dark text-white">
-          <h5 class="modal-title" id="exampleModalLabel">REGISTRAR RELLENO DE EXTINTOR</h5>
+          <small class="modal-title" id="exampleModalLabel">REGISTRAR RECARGA DE EXTINTOR</small>
 
           <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -327,15 +378,13 @@
             @csrf @method('PATCH')
             <div class="form-group my-3">
                 <label for="" class="fw-bold">Fecha del ultimo relleno</label>
-                <input type="date" value="{{$modal->ultima_recarga}}" name="ultima_recarga" class="form-control form-control-lg">
+                <input type="date" value="{{$modal->ultima_recarga}}" name="ultima_recarga" class="form-control ">
             </div>
             <div class="form-group my-3">
                 <label for="" class="fw-bold">Fecha del proximo relleno</label>
-                <input type="date" value="{{$modal->proxima_recarga}}" name="proxima_recarga" class="form-control form-control-lg">
+                <input type="date" value="{{$modal->proxima_recarga}}" name="proxima_recarga" class="form-control ">
             </div>
-
             <button  class="btn btn-success w-100 mt-3" >CONFIRMAR</button>
-
           </form>
         </div>
       </div>
@@ -362,7 +411,7 @@
             </div>
             <div class="modal-body">
 
-                <form action="{{route('editar.extintor', $modal->id)}}" method="POST">
+                <form action="{{route('editar.extintor', $modal->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf @method('PATCH')
                     <div class="row p-2">
                         <div class="col-sm-12 col-md-6 col-lg-4 my-2">
@@ -428,17 +477,17 @@
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Foto 1</label>
-                            <input type="file" name="foto1" value="{{old('foto1')}}" class="form-control">
+                            <input type="file" name="foto1" value="{{$modal->foto1}}" class="form-control">
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Foto 2</label>
-                            <input type="file" name="foto2" value="{{old('foto2')}}" class="form-control">
+                            <input type="file" name="foto2" value="{{$modal->foto2}}" class="form-control">
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Foto 3</label>
-                            <input type="file" name="foto3" value="{{old('foto3')}}" class="form-control">
+                            <input type="file" name="foto3" value="{{$modal->foto3}}" class="form-control">
                         </div>
 
                     </div>   
@@ -452,37 +501,6 @@
 
 
 
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Modal edicion  de extintor  -->
-
-
-
-
-
-
-<!-- Modal edicion  de extintor  -->
-<div class="modal fade" id="de{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-xl">
-        <div class="modal-content">
-            <div class="modal-header p-2 bg-primary text-white">
-                <h4 class="text-center pt-2">Extintor #{{$modal->id}}  | | {{$modal->ubicacion}}</h4>
-            </div>
-            <div class="modal-body">
-
-                <div class="row justify-content-center">
-                    <div class="col-4">
-                        <img src="public{{Storage::url($modal->foto1)}}" class="img-fluid" alt="">
-                    </div>
-                </div>   
-
-                <div class="row">
-
-                </div>
-
-            
             </div>
         </div>
     </div>

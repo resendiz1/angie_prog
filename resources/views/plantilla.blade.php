@@ -17,6 +17,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
     {{-- esta madre la puse asi por que si no se veia muy opaco al punto de verse blanco en la notificaciones --}}
 
+    {{-- para los carouseles --}}
+    <link rel="stylesheet" href="{{asset('slick/slick.css')}}">
+    <link rel="stylesheet" href="{{asset('slick/slick-theme.css')}}">
+
+            
+    
+
   </head>
   <body>
 
@@ -25,7 +32,21 @@
 
 
 
+
     <script type="text/javascript" src="{{asset('js/mdb.umd.min.js')}}"></script>
- 
+    <script type="text/javascript" src="{{asset('slick/slick.js')}}"></script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function(){
+        $('.slider-container').slick({
+          cssEase:'linear',
+          slidesToScroll: 1,
+          autoplay: true,
+          autoplaySpeed: 2000,
+        });
+      })
+
+    </script>
+
   </body>
 </html>

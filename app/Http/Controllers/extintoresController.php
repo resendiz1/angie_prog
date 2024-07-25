@@ -14,11 +14,8 @@ class extintoresController extends Controller
     
     public function menu_extintores(){
 
-         $extintores = Extintor::all();
-        
-
-
-        return view('encargado.extintores_menu', compact('extintores'));
+        $extintores = Extintor::simplePaginate(6);
+        return view('encargado.extintores.extintores_menu', compact('extintores'));
 
     }
 
@@ -27,7 +24,7 @@ class extintoresController extends Controller
         
         request()->validate([
 
-            'numero' => 'required',
+            'numero' => 'required|unique:extintores,numero',
             'planta' => 'required', //La planta se saca de la informacion de inicio de los usuarios
             'ubicacion' => 'required',
             'agente_extintor' => 'required',
@@ -37,16 +34,16 @@ class extintoresController extends Controller
             'fecha_fabricacion' => 'required',
             'vencimiento_antiguedad' => 'required',
             'estado_actual' => 'required',
-            'foto1' => 'required|max:4096',
-            'foto2' => 'required|max:4096',
-            'foto3' => 'required|max:4096'
+            'foto1' => 'required|max:2048',
+            'foto2' => 'required|max:2048',
+            'foto3' => 'required|max:2048'
 
         ]);
 
         //moviendo las imagenes de lugar
-            $foto1 = request()->file('foto1')->store();
-            $foto2 = request()->file('foto2')->store();
-            $foto3 = request()->file('foto3')->store();
+            $foto1 = request()->file('foto1')->store('public');
+            $foto2 = request()->file('foto2')->store('public');
+            $foto3 = request()->file('foto3')->store('public');
         //moviendo las imagenes de lugar
 
 
@@ -99,6 +96,11 @@ class extintoresController extends Controller
 
 
     public function editar_extintor($id){
+
+        //dando de alta variables :p 
+        $foto1='';
+        $foto2='';
+        $foto3='';
         
         request()->validate([
 
@@ -122,9 +124,15 @@ class extintoresController extends Controller
 
 
         // //moviendo las imagenes de lugar
-        //     $foto1 = request()->file('foto1')->store();
-        //     $foto2 = request()->file('foto2')->store();
-        //     $foto3 = request()->file('foto3')->store();
+            if(request('foto1')){
+                $foto1 = request()->file('foto1')->store('public');
+            }
+            if(request('foto2')){
+                $foto2 = request()->file('foto2')->store('public');
+            }
+            if(request('foto3')){
+                $foto3 = request()->file('foto3')->store('public');
+            }
         // //moviendo las imagenes de lugar
 
 
@@ -149,9 +157,9 @@ class extintoresController extends Controller
         $extintor->vencimiento_antiguedad = request('vencimiento_antiguedad');
         $extintor->estado_actual = request('estado');
         $extintor->observaciones = request('observaciones');
-        // $extintor->foto1 = $foto1;
-        // $extintor->foto2 = $foto2;
-        // $extintor->foto3 = $foto3;
+        $extintor->foto1 = $foto1;
+        $extintor->foto2 = $foto2;
+        $extintor->foto3 = $foto3;
 
         $extintor->update();
 
@@ -172,7 +180,7 @@ class extintoresController extends Controller
 
         $extintor->update();
 
-        return back()->with("mantenimiento", "Las fechas de mantenimiento del extintor $id fueron actualizadas");
+        return back()->with("mantenimiento", "Las fechas de mantenimiento del extintor $extintor->numero fueron actualizadas");
 
     }
 
@@ -193,5 +201,20 @@ class extintoresController extends Controller
 
     }
 
+    public function detalle_extintor(Extintor $id){
+
+        return view('encargado.extintores.detalle_extintor', compact('id'));
+
+    }
+
+
+    public function buscar_extintor(){
+
+        return request();
+
+
+
+
+    }
 
 }
