@@ -55,6 +55,11 @@ return [
         'encargado' =>[
             'driver' => 'session',
             'provider' => 'encargados'
+        ],
+
+        'comision' =>[
+            'driver' => 'session',
+            'provider' => 'comision'
         ]
 
 
@@ -103,8 +108,15 @@ return [
         'encargados' =>[
             'driver' => 'eloquent',
             'model' => App\Models\Encargado::class
-        ]
+        ],
         //guard del encargado de seh
+
+        //guard de la comision
+        'comision' => [
+            'driver' => 'eloquent',
+            'model' =>App\Models\Comision::class
+        ]
+        //guard de la comision
 
 
 

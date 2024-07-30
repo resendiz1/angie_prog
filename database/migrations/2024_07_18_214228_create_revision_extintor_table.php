@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('revision_extintor', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('extintor_id');
+            $table->unsignedBigInteger('comision_id');
+            $table->string('nombre_reviso');
             $table->string('manometro');
             $table->string('precinto');
             $table->string('etiqueta_mantenimientos');

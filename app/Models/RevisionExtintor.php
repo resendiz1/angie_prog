@@ -16,4 +16,9 @@ class RevisionExtintor extends Model
     public function extintor(){
         return $this->belongsTo(Extintor::class);
     }
+
+    public function comision(){
+        return $this->belongsTo(Extintor::class);
+    }
+
 }
