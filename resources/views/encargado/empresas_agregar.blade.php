@@ -307,7 +307,7 @@
                   name="direccion" 
                   placeholder="Dirección de la empresa"
                   value="{{old('direccion')}}"
-                  class=" form-control @if($errors->first('direccion')) {{'is-invalid'}}@endif
+                  class=" form-control mb-0 @if($errors->first('direccion')) {{'is-invalid'}}@endif
                   @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
                   {!!$errors->first('direccion', '<small class="text-danger">:message</small>')!!}
     
@@ -323,7 +323,7 @@
                   name="maps" 
                   placeholder="http://maps...."
                   value="{{old('maps')}}"
-                  class=" form-control @if($errors->first('maps')) {{'is-invalid'}}@endif 
+                  class=" form-control mb-0 @if($errors->first('maps')) {{'is-invalid'}}@endif 
                   @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
                   {!!$errors->first('maps', '<small class="text-danger mt-0">:message</small>')!!}
     
@@ -340,7 +340,7 @@
                   name="responsable" 
                   placeholder="Nombre completo"
                   value="{{old('resposable')}}"
-                  class=" form-control @if($errors->first('responsable')) {{'is-invalid'}}@endif  
+                  class=" form-control mb-0 @if($errors->first('responsable')) {{'is-invalid'}}@endif  
                    @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
                   {!!$errors->first('responsable', '<small class="text-danger">:message</small>')!!}
                   
@@ -358,7 +358,7 @@
                   minlength="10"
                   placeholder="Teléfono del responsable"
                   value="{{old('telefono_responsable')}}"
-                  class=" form-control @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
+                  class=" form-control mb-0 @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
                   @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >
                   {!!$errors->first('telefono_responsable', '<small class="text-danger">:message</small>')!!}
     
@@ -376,9 +376,9 @@
                   name="email_responsable" 
                   placeholder="Email"
                   value="{{old('email_responsable')}}"
-                  class=" form-control @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
-                  @if(!$errors->first('email_responsable'))  {{'is-valid'}}" @endif >
-                  {!!$errors->first('email_responsable', '<small class="text-danger" >:message</small>')!!}
+                  class=" form-control mb-0 @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
+                  @if(!$errors->first('email_responsable'))  {{'is-valid'}} @endif" >
+                  {!!$errors->first('email_responsable', '<small class="text-danger">:message</small>')!!}
     
             </div>
     
@@ -396,7 +396,7 @@
                     id="password"
                     name="password" 
                     value="{{old('password')}}"
-                    class=" form-control @if($errors->first('password')) {{'is-invalid'}}@endif 
+                    class=" form-control mb-0 @if($errors->first('password')) {{'is-invalid'}}@endif 
                     @if(!$errors->first('password'))    {{'is-valid'}} @endif " >
                     {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
     

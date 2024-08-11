@@ -2,19 +2,30 @@
 @section('contenido')
 @include('assets.nav')
 
-<div class="container mt-3" style="height: 2000px">
+<div class="container mt-3 bg-white" style="height: 1000px;">
     
 
 
-    <div class="row mt-4 justify-content-center bg-danger sombra-encabezados text-white text-center border border-light">  
+    <div class="row mt-4 justify-content-center border border-3">  
 
-        <div class="col-12">
-          <h3 class="mt-2">EXTINTORES</h3>
-          <strong>PLANTA 3</strong>
+        <div class="col-12 p-5">
+            <div class="row d-flex align-items-center">
+                <div class="col-4">
+                    <img src="/img/extintor.webp" class="img-fluid" alt="" style="height: 100px">
+                </div>
+                <div class="col-4 text-center">
+                    <h2  class="mt-2 mx-5">EXTINTORES</h2    >
+                    <strong class="mx-5">PLANTA 3</strong>
+                </div>
+                <div class="col-4"></div> {{--colabora a hacer esopacio de momento --}}
+            </div>
         </div>
     </div>
 
-    <div class="row mt-4 sombra-encabezados p-3 border">
+    
+
+
+    <div class="row mt-4  m-2">
         <div class="col-12">
             <div class="row">
 
@@ -22,11 +33,12 @@
                 <div class="col-sm-4 col-md-4 col-lg-3">
                     <form action="{{route('buscar.extintor')}}" method="POST">
                         @csrf
-                     <input type="search" placeholder="Agente extintor o ubicación" name="query" class="form-control">
+                     <input type="search" placeholder="Agente extintor o ubicación" name="query" class="form-control border border-5">
                 </div>
-                <div class="col-sm-12 col-md-4 col-lg-1 mb-3">
-                    <button class="btn btn-success btn-sm mt-1 w-100">
+                <div class="col-sm-12 col-md-4 col-lg-2 mb-3">
+                    <button class="btn btn-success  mt-1 w-100">
                         <i class="fa fa-search"></i>
+                        buscar
                     </button>
                     </form>
                 </div>
@@ -44,7 +56,7 @@
 
 
                <div class="col-sm-12 col-md-6 col-lg-1">
-                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-danger btn-sm mt-1 w-100">
+                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-danger  mt-1 w-100">
                     <i class="fa-solid fa-charging-station"></i>
                     <i class="fa fa-plus"></i>
                 </a>
@@ -52,7 +64,6 @@
             </div>
         </div>
     </div>
-
 
     <div class="row border border-3  my-4 p-5 d-flex justify-content-center" >
 
@@ -76,7 +87,7 @@
                     <i class="fa fa-bars"></i>
                   </button>
   
-                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton" style="cursor: pointer">
                     <li>
                       <a class="dropdown-item" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#el{{$extintor->id}}">
                           <i class="fa fa-trash mx-2"></i>

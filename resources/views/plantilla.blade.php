@@ -39,6 +39,7 @@
     <script>
       document.addEventListener('DOMContentLoaded', function(){
         $('.slider-container').slick({
+          arrows: false,
           cssEase:'linear',
           slidesToScroll: 1,
           autoplay: true,

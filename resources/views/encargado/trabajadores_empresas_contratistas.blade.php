@@ -15,11 +15,18 @@
         @endif
       </div>
       <div class="col-auto mx-2">
+        @if ($empresa[0]->sua == null)
+          <small class="text-decoration-underline fw-bold" onclick="alert('Aún no cargan este documento')">
+              Aún no se agrega SUA / Pago
+          </small>         
+        @else
+          <a href="{{Storage::url($empresa[0]->sua)}}" target="_blank" class="btn btn-success btn-sm">
+            <i class="fa fa-magnifying-glass"></i>
+            VER SUA / PAGO
+          </a>  
+        @endif
 
-        <a href="{{Storage::url($empresa[0]->sua)}}" target="_blank" class="btn btn-success btn-sm">
-          <i class="fa fa-magnifying-glass"></i>
-          VER SUA / PAGO
-        </a>
+
 
       </div>
     </div>

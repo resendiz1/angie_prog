@@ -1,8 +1,8 @@
 body{
-    /* background-color: rgb(239, 235, 235);  */
-    /* background-image: url('/img/fondo.jpg');  */
+    background-color: rgb(221, 215, 237); 
+     /* background-image: url('/img/fondo_extintores.jpg');   */
     background-position: center;
-    background-repeat: repeat;
+    background-repeat: no-repeat;
     background-size: cover;
 
   }
@@ -120,3 +120,17 @@ body{
 }
 
 /* CAROUSEL DE LOS EXTINTORES  */
+
+
+
+
+/* magnificando las imagenes */
+
+.image-magnifique{
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.image-magnifique:hover{
+    transform: scale(1.5);
+}

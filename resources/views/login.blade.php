@@ -39,13 +39,13 @@
 
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="text" name="email" id="form1Example1"  class="form-control border border-light" />
+                <input type="text" name="email" id="form1Example1" value="resendiz.galleta@gmail.com"  class="form-control border border-light" />
                 <label class="form-label" for="form1Example1">Correo Electronico</label>
               </div>
             
 
               <div data-mdb-input-init class="form-outline mb-4">
-                <input type="password" name="password" id="form1Example2" class="form-control border border-light" />
+                <input type="password" name="password" value="password" id="form1Example2" class="form-control border border-light" />
                 <label class="form-label" for="form1Example2">Contraseña</label>
               </div>
 

@@ -32,6 +32,7 @@ class extintoresController extends Controller
             'capacidad' => 'required',
             'tipo' => 'required',
             'letrero' => 'required',
+            'estado_actual' =>'required',
             'fecha_fabricacion' => 'required',
             'vencimiento_antiguedad' => 'required',
             'estado_actual' => 'required',
@@ -67,7 +68,7 @@ class extintoresController extends Controller
         $extintor->letrero = request('letrero');
         $extintor->fecha_fabricacion = request('fecha_fabricacion');
         $extintor->vencimiento_antiguedad = request('vencimiento_antiguedad');
-        $extintor->estado_actual = request('estado');
+        $extintor->estado_actual = request('estado_actual');
         $extintor->observaciones = request('observaciones');
         $extintor->foto1 = $foto1;
         $extintor->foto2 = $foto2;
