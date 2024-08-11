@@ -44,23 +44,61 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Ultima recarga: </span> <br>
-            <span>{{$id->ultima_recarga}}</span>
+            @if ($id->ultima_recarga == null)
+                <small class="text-dark text-decoration-underline">
+                    <i class="fa fa-warning"></i>
+                    Aún no hay información
+                </small>
+            @else
+                <span>{{$id->ultima_recarga}}</span>
+            @endif
+
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Proxima recarga</span> <br>
-            <span>{{$id->proxima_recarga}}</span>
+            @if ($id->proxima_recarga == null)
+                <small class="text-dark text-decoration-underline">
+                    <i class="fa fa-warning"></i>
+                    Aún no hay información
+                </small>
+            @else
+                <span>{{$id->proxima_recarga}}</span>
+            @endif
+
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Ultimo mantenimiento: </span> <br>
-            <span>{{$id->ultimo_mantenimiento}}</span>
+            @if ($id->ultimo_mantenimiento == null)
+            <small class="text-dark text-decoration-underline">
+                <i class="fa fa-warning"></i>
+                Aún no hay información
+            </small>
+            @else
+                <span>{{$id->ultimo_mantenimiento}}</span>    
+            @endif
         </div>
+
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Proximo mantenimientp</span> <br>
-            <span>{{$id->proximo_mantenimiento}}</span>
+            @if ($id->proximo_mantenimiento == null)
+                <small class="text-dark text-decoration-underline">
+                    <i class="fa fa-warning"></i>
+                    Aún no hay información
+                </small>
+            @else
+                <span>{{$id->proximo_mantenimiento}}</span>
+            @endif
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Ultima prueba hidrostatica: </span> <br>
-            <span>{{$id->ultima_prueba}}</span>
+            @if ($id->ultima_prueba == null)
+            <small class="text-dark text-decoration-underline">
+                <i class="fa fa-warning"></i>
+                Aún no hay información
+            </small>
+            @else
+                <span>{{$id->ultima_prueba}}</span>
+            @endif
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Señaletica: </span> <br>
@@ -77,11 +115,18 @@
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Estado: </span> <br>
-            <span>{{$id->estado}}</span>
+            <span>{{$id->estado_actual}}</span>
         </div>
         <div class="col-sm-12 col-md-6 col-lg-3 m-2 border p-2">
             <span class="fw-bold py-0 my-0">Observaciones: </span> <br>
-            <span>{{$id->observaciones}}</span>
+            @if ($id->observaciones == null)
+                <small class="text-dark text-decoration-underline">
+                    <i class="fa fa-warning"></i>
+                    Aún no hay información
+                </small>
+            @else
+                <span>{{$id->observaciones}}</span>
+            @endif
         </div>
 
     </div>
