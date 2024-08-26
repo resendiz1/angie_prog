@@ -2,20 +2,21 @@
 @section('contenido')
 @include('assets.nav')
 
-<div class="container mt-3 bg-white" style="height: 1000px;">
+<div class="container mt-3 bg-white border border-5" style="height: 1000px;">
     
 
 
-    <div class="row mt-4 justify-content-center border border-3">  
+    <div class="row justify-content-center border border-bottom bg-danger text-white mb-3">  
 
-        <div class="col-12 p-5">
+        <div class="col-12 p-1">
             <div class="row d-flex align-items-center">
                 <div class="col-4">
-                    <img src="/img/extintor.webp" class="img-fluid" alt="" style="height: 100px">
+                    {{-- <img src="/img/extintor.webp" class="img-fluid" alt="" style="height: 100px"> --}}
                 </div>
                 <div class="col-4 text-center">
-                    <h2  class="mt-2 mx-5">EXTINTORES</h2    >
-                    <strong class="mx-5">PLANTA 3</strong>
+                    <h2  class="mt-2 mx-2">EXTINTORES</h2>
+                    <strong class="mx-2">PLANTA 3</strong> <br>
+                    <a href="{{route('perfil.encargado')}}" class="text-white" >regresar</a>
                 </div>
                 <div class="col-4"></div> {{--colabora a hacer esopacio de momento --}}
             </div>
@@ -25,7 +26,7 @@
     
 
 
-    <div class="row mt-4  m-2">
+    <div class="row mt-5  m-2">
         <div class="col-12">
             <div class="row">
 
@@ -65,7 +66,7 @@
         </div>
     </div>
 
-    <div class="row border border-3  my-4 p-5 d-flex justify-content-center" >
+    <div class="row my-4 p-5 d-flex justify-content-center border border-top" >
 
         <div class="col-12 text-center mb-4">
                <strong class="h5 fw-bold" style="text-decoration: underline"> Pagina: {{ $extintores->currentPage() }}  </strong>
@@ -547,7 +548,7 @@ document.addEventListener('DOMContentLoaded', function(){
         "debug": false,
         "newestOnTop": false,
         "progressBar": true,
-        "positionClass": "toast-bottom-full-width",
+        "positionClass": "toast-top-right",
         "preventDuplicates": false,
         "onclick": null,
         "showDuration": "700",

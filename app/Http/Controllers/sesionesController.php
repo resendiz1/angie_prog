@@ -14,7 +14,7 @@ class sesionesController extends Controller
     public function login(Request $request){
         // return request('rol');
         $credentials = $request->only('email', 'password');
-        $email = request('email');
+
         
 
 
@@ -60,6 +60,16 @@ class sesionesController extends Controller
 
             return back()->with('error_sesion_contratista', 'Credenciales invalidas para Contratistas');
 
+        }
+
+
+        if(request('rol') == 'comision'){
+            
+            if(Auth::guard('empresa')->attempt($credentials)){
+                return redirect()->route('perfil.comision');
+            }
+
+            return back()->with('error_session_comision', 'Credenciales invalidas para miembros de la comisión');
         }
 
 

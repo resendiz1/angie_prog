@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\comisionController;
 use App\Http\Controllers\contratistasController;
 use App\Http\Controllers\extintoresController;
 use App\Http\Controllers\sesionesController;
@@ -62,3 +63,7 @@ Route::get('/contratistas', [sesionesController::class, 'perfil_contratistas'])-
 Route::post('/contratista_agregado', [contratistasController::class, 'add_contratista'])->name('add.contratista')->middleware('auth:empresa');
 Route::patch('/contratistas/{id}/sua_agregado', [contratistasController::class, 'add_sua'])->name('sua.empresa')->middleware('auth:empresa');
 Route::delete('/contratista/{id}/trabajador_borrado', [contratistasController::class, 'delete_contratista'])->name('delete.contratista')->middleware('auth:empresa');
+
+
+//Rutas que son de los miembros de la comision
+Route::get('/comision', [comisionController::class, 'index'])->name('perfil.comision');

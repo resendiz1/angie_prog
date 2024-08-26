@@ -22,6 +22,9 @@
               @if (session('error_sesion_contratista'))
                  <span class="text-center text-danger fw-bold"> {{session('error_sesion_contratista')}}</span>
               @endif
+              @if (session('error_sesion_comision'))
+              <span class="text-center text-danger fw-bold"> {{session('error_sesion_comision')}}</span>
+           @endif
 
             {{-- {{Auth::guard('encargado')->user()->name}} --}}
 
@@ -33,6 +36,7 @@
                   <option value="encargado">Encargado de SEH</option>
                   <option value="administrador">Admnistrador</option>
                   <option value="empresa">Empresa</option>
+                  <option value="comision">Comisión</option>
                 </select>
               </div>
 

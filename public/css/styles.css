@@ -127,10 +127,10 @@ body{
 /* magnificando las imagenes */
 
 .image-magnifique{
-    transition: transform 0.3s ease;
+    transition: transform .4s ease;
     cursor: pointer;
 }
 
 .image-magnifique:hover{
-    transform: scale(1.5);
+    transform: scale(1.2);
 }
