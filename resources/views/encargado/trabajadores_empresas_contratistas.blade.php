@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
+@include('assets.nav_encargado')
 
 
 <div class="container bg-white mt-5 p-5 sombra-contenedor ">
@@ -56,7 +56,7 @@
         @endphp
     @endif
       
-  <div class="row mt-5 border p-3 sombra-filas animate__animated animate__bounceIn {{$desautorizado}}">      
+  <div class="row mt-5 border p-3 sombra-filas{{$desautorizado}}">      
     
  
   
@@ -79,10 +79,16 @@
   
           <div class="col-sm-12 col-md-6  col-lg-1">
             <b>DC3: </b> <br>
-            <a href="{{Storage::url($contratista->dc3)}}" target="_blank">DC3</a>
+            <a href="{{Storage::url($contratista->dc3)}}" target="_blank" >DC3</a>
           </div>
 
-          <div class="col-2"></div>  {{--Para hacer bulto --}}
+          <div class="col-4 mt-3">
+            @if ($contratista->autorizado_entrar)
+                <span class="badge text-bg-success">autorizado para entrar</span>
+            @else
+                <span class="badge text-bg-danger">no autorizadopara entrar </span>
+            @endif
+          </div>  {{--Para hacer bulto --}}
   
           {{-- <div class="col-sm-12 col-md-6 col-lg-2 text-center">
             <small class="fw-bold">ELIMINAR:</small> <br> 
@@ -92,20 +98,20 @@
           </div> --}}
   
           @if ($contratista->autorizado_entrar == 1)
-            <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-              <small class="fw-bold">DESAUTORIZAR:</small> <br>
-              <a href="#" class="btn btn-danger btn-sm w-100  p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#un{{$contratista->id}}">
-                <i class="fa-solid fa-x  mx-2"></i>
+            <div class="col-sm-12 col-md-2 col-lg-2 text-center mt-3">
+              <a href="#" class="w-100 text-danger text-center fw-bold p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#un{{$contratista->id}}">
+                <i class="fa-solid fa-xmark-circle  mx-2"></i>
+                Desautorizar
               </a>
             </div>            
           @endif
 
 
           @if ($contratista->autorizado_entrar == 0)
-            <div class="col-sm-12 col-md-6 col-lg-4 text-center">
-              <small class="fw-bold">AUTORIZAR:</small> <br>
-              <a href="#" class="btn btn-success btn-sm w-100  p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#a{{$contratista->id}}"">
+            <div class="col-sm-12 col-md-2 col-lg-2 text-center mt-3">
+              <a href="#" class="text-success btn-sm w-100  p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#a{{$contratista->id}}"">
                 <i class="fa fa-circle-check mx-2"></i>
+                Autorizar
               </a>
             </div>            
           @endif
@@ -203,7 +209,16 @@
 
 
       @empty
-          <li class="mt-4">No hay registros</li>
+
+        <div class="row justify-content-center mt-5">
+          <div class="col-3 text-center">
+            <img src="/img/img/vacio.png" class="img-fluid" alt="">
+          </div>
+          <div class="col-12 text-center">
+            <h3>No hay datos por aqui</h3>
+          </div>
+        </div>
+      
       @endforelse
   
   
@@ -214,35 +229,18 @@
   
   </div>
   
-  
-  
-  
-  
-  
-  
-  
-  
 
-      
-  
-
-  
-  
-  
-  
-   
-  
-  
-  
-  
-  
-  
-  
-  
- 
-  
   
   <!-- AQUI ESTAN TODOS LOS MODALES -->
+
+
+
+
+
+
+
+
+
   
     
 @endsection

@@ -1,12 +1,12 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
+@include('assets.nav_encargado')
 
 <div class="container mt-3 bg-white border border-5" style="height: 1000px;">
     
 
 
-    <div class="row justify-content-center border border-bottom bg-danger text-white mb-3">  
+    <div class="row justify-content-center border border-bottom text-white mb-3" style="background-color: rgb(106, 87, 192)">  
 
         <div class="col-12 p-1">
             <div class="row d-flex align-items-center">
@@ -29,7 +29,6 @@
     <div class="row mt-5  m-2">
         <div class="col-12">
             <div class="row">
-
                 
                 <div class="col-sm-4 col-md-4 col-lg-3">
                     <form action="{{route('buscar.extintor')}}" method="POST">
@@ -37,7 +36,7 @@
                      <input type="search" placeholder="Agente extintor o ubicación" name="query" class="form-control border border-5">
                 </div>
                 <div class="col-sm-12 col-md-4 col-lg-2 mb-3">
-                    <button class="btn btn-success  mt-1 w-100">
+                    <button class="btn text-white mt-1 w-100" style="background-color: rgb(114, 89, 224)">
                         <i class="fa fa-search"></i>
                         buscar
                     </button>
@@ -57,7 +56,7 @@
 
 
                <div class="col-sm-12 col-md-6 col-lg-1">
-                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-danger  mt-1 w-100">
+                <a href="#" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#agregar" class="btn btn-dark  mt-1 w-100">
                     <i class="fa-solid fa-charging-station"></i>
                     <i class="fa fa-plus"></i>
                 </a>
@@ -163,7 +162,14 @@
         </div>  {{-- all card extintores --}}       
 
         @empty
-            <li>No hay resultados</li>
+        <div class="row justify-content-center mt-5">
+            <div class="col-3 text-center">
+              <img src="/img/img/vacio.png" class="img-fluid" alt="">
+            </div>
+            <div class="col-12 text-center">
+              <h3>No hay datos por aqui</h3>
+            </div>
+          </div>
         @endforelse
 
     </div>
@@ -207,8 +213,8 @@
 <div class="modal fade" id="agregar" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content ">
-            <div class="modal-header p-2 bg-danger text-white">
-                <h5 class="text-center">Agregar Extintor</h5>
+            <div class="modal-header p-4  text-white" style="background-color: rgb(103, 87, 171)">
+                <h3 class="text-center">Agregar Extintor</h3>
             </div>
             <div class="modal-body">
 
@@ -269,11 +275,11 @@
                             <label for="" class="fw-bold">Fecha de fabricación</label>
                             <input type="date" name="fecha_fabricacion" value="{{old('fecha_fabricacion')}}" class="form-control">
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 my-2">
+                        <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Vencimiento por antiguedad</label>
                             <input type="date" name="vencimiento_antiguedad" value="{{old('vencimiento_antiguedad')}}" class="form-control">
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 my-2">
+                        <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Estado</label>
                             <input type="text" name="estado_actual" value="{{old('estado_actual')}}" class="form-control">
                         </div>
@@ -295,9 +301,12 @@
                         </div>
                     </div>   
                     
-                    <div class="row justify-content-center my-3">
-                        <div class="col-10 text-center">
-                            <button class="btn btn-success btn-sm w-100">Confirmar</button>
+                    <div class="row mt-2">
+                        <div class="col-12 text-center">
+                            <button class="btn text-white  w-50" style="background-color: rgb(114, 89, 224)">
+                                <i class="fa fa-save mx-2"></i>
+                                Guardar
+                            </button>
                         </div>
                     </div>
 
@@ -418,7 +427,7 @@
 <div class="modal fade" id="ed{{$modal->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl">
         <div class="modal-content ">
-            <div class="modal-header p-2 bg-danger text-white">
+            <div class="modal-header p-4  text-white" style="background-color:rgb(104, 90, 166)">
                 <h5 class="text-center">Editar extintor</h5>
             </div>
             <div class="modal-body">
@@ -475,17 +484,17 @@
                             <label for="" class="fw-bold">Fecha de fabricación</label>
                             <input type="date" name="fecha_fabricacion" class="form-control" value="{{$modal->fecha_fabricacion}}">
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 my-2">
+                        <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Vencimiento por antiguedad</label>
                             <input type="date" name="vencimiento_antiguedad" class="form-control" value="{{$modal->vencimiento_antiguedad}}">
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 my-2">
+                        <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Estado</label>
                             <input type="text" name="estado" class="form-control" value="{{$modal->estado_actual}}">
                         </div>
                         <div class="col-sm-12 col-md-12 col-lg-12 my-2">
                             <label for="" class="fw-bold">Observaciones</label>
-                            <input type="text" name="observaciones" class="form-control" value="{{$modal->observaciones}}">
+                            <textarea name="observaciones" class="form-control w-100 h-50">{{$modal->observaciones}}</textarea>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4 my-2">
                             <label for="" class="fw-bold">Foto 1</label>
@@ -505,8 +514,8 @@
                     </div>   
                 
                     <div class="row justify-content-center my-3">
-                        <div class="col-10 text-center">
-                            <button class="btn btn-success btn-sm w-100">Confirmar</button>
+                        <div class="col-8 text-center">
+                            <button class="btn w-100 text-center text-white" style="background-color: rgb(131, 73, 185)">Confirmar</button>
                         </div>
                     </div>
                 </form>

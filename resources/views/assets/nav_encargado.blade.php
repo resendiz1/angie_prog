@@ -9,11 +9,7 @@
         </a>
       </div>
 
-      <div class="col-5 mx-3 d-flex align-items-center text-right">
-        <a href="#" class="text-white">
-          <i class="fa-solid fa-right-from-bracket fa-2x"></i>
-        </a>
-      </div>
+
   
     </div>
   </div>

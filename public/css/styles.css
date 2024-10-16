@@ -72,6 +72,15 @@ body{
     height: 50%;
 }
 
+.menu-brigadas{
+    background: 
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('/img/img/brigadas.webp');
+    
+    background-size: cover;
+    height: 50%;
+}
+
 
 
 

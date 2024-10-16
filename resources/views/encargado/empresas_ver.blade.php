@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
+@include('assets.nav_encargado')
 
 
 <div class="container bg-white mt-3 sombra-contenedor " style="height: 2000px">

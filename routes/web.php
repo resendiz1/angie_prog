@@ -1,10 +1,11 @@
 <?php
 
-use App\Http\Controllers\comisionController;
-use App\Http\Controllers\contratistasController;
-use App\Http\Controllers\extintoresController;
-use App\Http\Controllers\sesionesController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\brigadaController;
+use App\Http\Controllers\comisionController;
+use App\Http\Controllers\sesionesController;
+use App\Http\Controllers\extintoresController;
+use App\Http\Controllers\contratistasController;
 
 
 
@@ -56,6 +57,11 @@ Route::patch('/encargado/extintores/{id}/mantenimiento', [extintoresController::
 Route::get('/encargado/extintores/{id}/detalle', [extintoresController::class, 'detalle_extintor'])->name('detalle.extintor')->middleware('auth:encargado');
 Route::post('/encargado/extintores/', [extintoresController::class, 'buscar_extintor'])->name('buscar.extintor')->middleware('auth:encargado');
 
+//Rutas que control lo que hacen las brigadas
+Route::get('/encargado/brigadistas/', [brigadaController::class, 'menu_brigada'])->name('menu.brigadas');
+
+
+
 
 
 //Rutas de el perfil de las empresa
@@ -63,6 +69,9 @@ Route::get('/contratistas', [sesionesController::class, 'perfil_contratistas'])-
 Route::post('/contratista_agregado', [contratistasController::class, 'add_contratista'])->name('add.contratista')->middleware('auth:empresa');
 Route::patch('/contratistas/{id}/sua_agregado', [contratistasController::class, 'add_sua'])->name('sua.empresa')->middleware('auth:empresa');
 Route::delete('/contratista/{id}/trabajador_borrado', [contratistasController::class, 'delete_contratista'])->name('delete.contratista')->middleware('auth:empresa');
+
+
+
 
 
 //Rutas que son de los miembros de la comision

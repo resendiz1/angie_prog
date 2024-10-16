@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
+@include('assets.nav_encargado')
 
 
 <!-- NOTIFICACIONES -->
@@ -31,10 +31,6 @@
             Agregar empresas
         </button>
       </div>
-
-      <div class="text-danger flotante">
-        <i class="fa fa-heart animate__animated animate__heartBeat animate__infinite  	infinite fa-5x"></i>
-      </div>
     </div>
   
   
@@ -54,15 +50,16 @@
   
 @forelse ($empresas as $empresa)
       
-      <div class="col-sm-12 col-md-8 col-lg-3 border p-3 sombra-filas mx-2 my-3  animate__animated animate__zoomInDown">        
-
+      <div class="col-sm-12 col-md-8 col-lg-3 border p-3 sombra-filas mx-2 my-3">        
 
           <div class="row">
   
             <div class="col-12 text-center mb-2">
-                  <a class="fw-bold" href="{{route('trabajadores.empresas.contratistas', $empresa->id)}}">{{$empresa->nombre}}</a>
+                  <a class="fw-bold h4" href="{{route('trabajadores.empresas.contratistas', $empresa->id)}}">{{$empresa->nombre}}</a>
             </div>
-    
+            
+            <hr>
+
             <div class="col-12 mt-2">
                 <b>Email: </b> <br>
                 <a href="mailto:{{$empresa->email}}">{{$empresa->email}}</a>
@@ -86,17 +83,17 @@
     
             <hr class="my-3">
             
-            <div class="col-6 text-center mt-1">
-                <small class="fw-bold">ELIMINAR: </small> <br> 
-                <a href="#" class="btn btn-danger border btn-rounded btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$empresa->id}}">
-                <i class="fa fa-eraser mx-2"></i>
+            <div class="col-6 text-center mt-1 fw-bold">
+                <a href="#" class="text-danger w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$empresa->id}}">
+                  <i class="fa fa-eraser mx-2"></i>
+                  Eliminar
                 </a>
             </div>
     
-            <div class="col-6 text-center mt-1">
-                <small class="fw-bold">EDITAR: </small> <br> 
-                <a href="#" class="btn btn-primary border btn-rounded btn-sm  w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#edit{{$empresa->id}}">
+            <div class="col-6 text-center mt-1 fw-bold">
+                <a href="#" class="w-100 p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#edit{{$empresa->id}}">
                 <i class="fa fa-edit mx-2"></i>
+                Actualizar
                 </a>
             </div>
   
@@ -106,11 +103,11 @@
 
       <!-- Modal m google maps -->
       <div class="modal fade" id="map{{$empresa->id}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable modal-lg">
-          <div class="modal-content ">
-            <div class="modal-body text-center">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-body text-center p-0">
 
-                <div id="mapContainer" class="my-1 mx-0" style="height: 100%">
+                <div  class="my-0 mx-0 w-100 h-100">
                   {!! $empresa->maps !!}
                 </div>
                 
@@ -237,8 +234,19 @@
 
 
 @empty
-<li>No hay registros</li>
+
+
+    <div class="row justify-content-center mt-5">
+      <div class="col-3 text-center">
+        <img src="/img/img/vacio.png" class="img-fluid" alt="">
+      </div>
+      <div class="col-12 text-center">
+        <h3>No hay datos por aqui</h3>
+      </div>
+    </div>
+
       
+    
 @endforelse 
 
   
@@ -290,8 +298,7 @@
                   name="nombre" 
                   placeholder="Empresa"
                   value="{{old('nombre')}}"
-                  class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif
-                  @if(!$errors->first('nombre')) {{'is-valid'}}@endif  " >
+                  class=" form-control mb-0 @if($errors->first('nombre')) {{'is-invalid'}}@endif">
                   {!!$errors->first('nombre', '<small class="text-danger">:message</small>')!!}
                  
     
@@ -307,8 +314,7 @@
                   name="direccion" 
                   placeholder="Dirección de la empresa"
                   value="{{old('direccion')}}"
-                  class=" form-control mb-0 @if($errors->first('direccion')) {{'is-invalid'}}@endif
-                  @if(!$errors->first('direccion')) {{'is-valid'}}  @endif " >
+                  class=" form-control mb-0 @if($errors->first('direccion')) {{'is-invalid'}}@endif">
                   {!!$errors->first('direccion', '<small class="text-danger">:message</small>')!!}
     
             </div>
@@ -323,8 +329,7 @@
                   name="maps" 
                   placeholder="http://maps...."
                   value="{{old('maps')}}"
-                  class=" form-control mb-0 @if($errors->first('maps')) {{'is-invalid'}}@endif 
-                  @if(!$errors->first('maps')) {{'is-valid'}}  @endif" >
+                  class=" form-control mb-0 @if($errors->first('maps')) {{'is-invalid'}}@endif">
                   {!!$errors->first('maps', '<small class="text-danger mt-0">:message</small>')!!}
     
             </div>
@@ -340,8 +345,7 @@
                   name="responsable" 
                   placeholder="Nombre completo"
                   value="{{old('resposable')}}"
-                  class=" form-control mb-0 @if($errors->first('responsable')) {{'is-invalid'}}@endif  
-                   @if(!$errors->first('responsable')) {{'is-valid'}} @endif " >
+                  class=" form-control mb-0 @if($errors->first('responsable')) {{'is-invalid'}}@endif">
                   {!!$errors->first('responsable', '<small class="text-danger">:message</small>')!!}
                   
     
@@ -358,8 +362,7 @@
                   minlength="10"
                   placeholder="Teléfono del responsable"
                   value="{{old('telefono_responsable')}}"
-                  class=" form-control mb-0 @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif
-                  @if(!$errors->first('telefono_responsable')) {{'is-valid'}} @endif " >
+                  class=" form-control mb-0 @if($errors->first('telefono_responsable')) {{'is-invalid'}}@endif">
                   {!!$errors->first('telefono_responsable', '<small class="text-danger">:message</small>')!!}
     
             </div>
@@ -376,8 +379,7 @@
                   name="email_responsable" 
                   placeholder="Email"
                   value="{{old('email_responsable')}}"
-                  class=" form-control mb-0 @if($errors->first('email_responsable')) {{'is-invalid'}}@endif 
-                  @if(!$errors->first('email_responsable'))  {{'is-valid'}} @endif" >
+                  class=" form-control mb-0 @if($errors->first('email_responsable')) {{'is-invalid'}}@endif">
                   {!!$errors->first('email_responsable', '<small class="text-danger">:message</small>')!!}
     
             </div>
@@ -396,8 +398,7 @@
                     id="password"
                     name="password" 
                     value="{{old('password')}}"
-                    class=" form-control mb-0 @if($errors->first('password')) {{'is-invalid'}}@endif 
-                    @if(!$errors->first('password'))    {{'is-valid'}} @endif " >
+                    class=" form-control mb-0 @if($errors->first('password')) {{'is-invalid'}}@endif">
                     {!!$errors->first('password', '<small class="text-danger">:message</small>')!!}
     
                 </div>
@@ -413,7 +414,7 @@
     
     
             <div class="col-sm-12 col-md-12 col-lg-6 mt-4 ">
-                <button class="btn btn-success w-100">
+                <button class="btn btn-primary w-100">
                   Agregar
                 </button>
             </div>

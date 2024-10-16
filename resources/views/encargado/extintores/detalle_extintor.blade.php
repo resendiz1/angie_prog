@@ -1,6 +1,6 @@
 @extends('plantilla')
 @section('contenido')
-@include('assets.nav')
+@include('assets.nav_encargado')
 
 
 <div class="container mt-2 border  border-3 p-5 bg-white" >
