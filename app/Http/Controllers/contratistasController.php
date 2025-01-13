@@ -57,6 +57,10 @@ class contratistasController extends Controller
     }
 
 
+
+
+    
+
     public function empresa_delete($id){
 
         $empresa = Empresa::findOrFail($id);
@@ -64,6 +68,16 @@ class contratistasController extends Controller
         return back()->with('eliminado','La empresa fue eliminada');
 
     } 
+
+
+
+
+
+
+
+
+
+
 
     public function empresa_editar($id){
 

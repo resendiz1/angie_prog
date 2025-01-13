@@ -1,18 +1,41 @@
 @extends('plantilla')   
 @section('contenido')
 
+<style>
+  body{
+    background-image: url('/img/fondo_contraistas.jpg');
+    background-size: cover
+    background-repeat: no-repeat;
+    background-position: center center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+  }
+</style>
+<br>
+<div class="container bg-white mt-5 p-5 border sombra-contenedor p-5 h-75" > <!-- Este DIV cierra todo el documento -->
 
-
-<div class="container bg-white mt-5 p-5 border sombra-contenedor p-5 "> <!-- Este DIV cierra todo el documento -->
-
+    <div class="row">
+      <div class="alert alert-success py-1">
+        * Dentro de este apartado podras <b> incribir a tus trabajadores para que puedan ingresar </b> a las instalaciones.
+      </div>
+    </div>
 
     <div class="row justify-content-center border p-3 sombra-encabezados bg-white">
   
       <!-- <div class="col-4"></div> -->
   
       <div class="col-12 text-center mb-1">
-        <h4>{{Auth::guard('empresa')->user()->nombre}}</h4>
-        
+        <h2>{{Auth::guard('empresa')->user()->nombre}}</h2>
+        <form action="{{route('cerrar.sesion')}}" method="POST">
+          @csrf
+          
+          <button type="submit" class="btn btn-sm btn-light py-1">
+            <i class="fa fa-power-off" ></i>
+            Cerrar sesión
+          </button>
+        </form>
+
         @if (session('add_sua'))
             <h6 class="text-success">{{session('add_sua')}}</h6>
         @endif
@@ -20,9 +43,14 @@
         @if (session('eliminado'))
         <h6 class="text-danger">{{session('eliminado')}}</h6>
         @endif
-
-
       </div>
+
+      {{-- <div class="col-12 text-center mb-1">
+        <form action="#" method="POST">
+          @csrf
+          <button class="btn btn-light btn-sm">Cerrar sesión</button>
+        </form>
+      </div> --}}
   
   
   
@@ -69,36 +97,39 @@
 
 @forelse ($contratistas as $contratista)
         
-    <div class="row justify-content-center mt-4 border p-3 sombra-filas bg-white">
+    <div class="row justify-content-around mt-4 border p-3 sombra-filas bg-white">
   
       <div class="col-2">
-        <b>Nombre: </b> <br>
-        <small>{{$contratista->nombre_completo}}</small>
+        <span class="fw-bold">{{$contratista->nombre_completo}}</span>
       </div>
 
       <div class="col-2 text-center">
-        <b>NSS: </b> <br>
         <a href="{{Storage::url($contratista->nss)}}" target="_blank">
-          <i class="fa fa-eye"></i>
+          <i class="fa-regular fa-file-pdf mx-1"></i> / <i class="fa-solid fa-image mx-1"></i>
+          NSS
         </a>
 
       </div>
       
 
       <div class="col-2 text-center">
-        <b>INE: </b> <br>
-        <a href="{{Storage::url($contratista->ine)}}" target="_blank">INE</a>
+        <a href="{{Storage::url($contratista->ine)}}" target="_blank">
+          <i class="fa-regular fa-file-pdf mx-1"></i> / <i class="fa-solid fa-image mx-1"></i>
+          INE
+        </a>
       </div>
 
 
       <div class="col-2 text-center">
-        <b>DC3: </b> <br>
-        <a href="{{Storage::url($contratista->dc3)}}" target="_blank">DC3</a>
+        <a href="{{Storage::url($contratista->dc3)}}" target="_blank">
+          <i class="fa-regular fa-file-pdf mx-1"></i> / <i class="fa-solid fa-image mx-1"></i>
+          DC3
+        </a>
       </div>
 
       <div class="col-2 text-center">
-        <b>ELIMINAR: </b> <br>
-        <a href="#" class="btn btn-danger btn-sm p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$contratista->id}}">
+        <a href="#" class="text-danger p-1" data-mdb-ripple-init data-mdb-modal-init data-mdb-target="#e{{$contratista->id}}">
+          Eliminar
         <i class="fa fa-eraser mx-2"></i>
         </a>
       </div>
@@ -113,11 +144,12 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h5 class="modal-title" id="exampleModalLabel">ELIMINAR A: {{$contratista->nombre_completo}} </h5> <br>
+        <h5 class="modal-title" id="exampleModalLabel">ELIMINAR:  </h5> <br>
 
         <button type="button" class="btn-close" data-mdb-ripple-init data-mdb-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body border text-center">
+        <h5>{{$contratista->nombre_completo}}</h5>
         <form action="{{route('delete.contratista', $contratista->id)}}" method="POST" >
           @csrf @method('DELETE')
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 
 class sesionesController extends Controller
 {
@@ -71,14 +72,21 @@ class sesionesController extends Controller
 
             return back()->with('error_session_comision', 'Credenciales invalidas para miembros de la comisión');
         }
-
-
-
-
-
         
 
 //bloque de inicio de sesion de la empresa
+
+
+    }
+
+
+
+
+    public function logout(){
+
+        Auth::logout();
+        Session::flush();
+        return  redirect('/');
 
 
     }

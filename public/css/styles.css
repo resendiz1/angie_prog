@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap');
+
 body{
     background-color: rgb(221, 215, 237); 
      /* background-image: url('/img/fondo_extintores.jpg');   */
@@ -79,6 +81,10 @@ body{
     
     background-size: cover;
     height: 50%;
+}
+
+.notificaciones{
+    font-family: "Arimo", serif;
 }
 
 

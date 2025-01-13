@@ -5,6 +5,7 @@ use App\Http\Controllers\brigadaController;
 use App\Http\Controllers\comisionController;
 use App\Http\Controllers\sesionesController;
 use App\Http\Controllers\extintoresController;
+use App\Http\Controllers\operadoresController;
 use App\Http\Controllers\contratistasController;
 
 
@@ -14,7 +15,7 @@ use App\Http\Controllers\contratistasController;
 
 
 Route::view('/', 'login')->name('login');
-
+Route::post('/logout', [sesionesController::class, 'logout'])->name('cerrar.sesion');
 
 
 
@@ -59,6 +60,14 @@ Route::post('/encargado/extintores/', [extintoresController::class, 'buscar_exti
 
 //Rutas que control lo que hacen las brigadas
 Route::get('/encargado/brigadistas/', [brigadaController::class, 'menu_brigada'])->name('menu.brigadas');
+
+
+
+//Rutas que van g3stionando a los operadores
+Route::get('/encargado/operadores/', [operadoresController::class, 'operadores_index'])->name('operadores.index');
+Route::post('/encargado/operadores/agregar', [operadoresController::class, 'agregar_operador'])->name('agregar.operador');
+
+
 
 
 

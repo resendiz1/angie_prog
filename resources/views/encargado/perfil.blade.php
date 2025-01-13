@@ -10,7 +10,7 @@
             <div class="col-sm-12 col-md-12 col-lg-5 menu-brigadas pt-4 px-4 pb-2 text-white m-3">
 
                 <div class="row justify-content-center">
-                    <div class="col-7 text-center  justify-content-center" style="background-color: rgb(124, 92, 218)">
+                    <div class="col-7 text-center  justify-content-center bg-dark">
                         <h4 class="mt-2">OPERADORES</h4>
                     </div>
                 </div>
@@ -19,8 +19,8 @@
 
                 <div class="row mt-5 py-5 "  >
 
-                    <div class="col-12  p-2 mb-0 " >
-                        <a  class="btn btn-dark" href="{{route('menu.brigadas')}}" style="color:white;">
+                    <div class="col-12  p-2 mb-0  text-center" >
+                        <a  class="btn btn-dark" href="{{route('operadores.index')}}" style="color:white;">
                             <i class="fa-solid fa-helmet-safety fa-2x"></i>
                             <h6 class="mt-2">Gestionar datos de los operadores</h6>
                         </a>

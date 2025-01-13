@@ -7,8 +7,8 @@
     <div class="container-fluid mt-0 p-5  fondo-login">
         <div class="row mt-5 justify-content-center">
       
-          <div class="col-3 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
-            <h4 class=" text-center mb-3">Inicio de Sesión</h4>
+          <div class="col-sm-12 col-md-12 col-lg-4 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
+            <h1>Angie's App</h1>
             <img src="img/angie.png" id="logo" class="img-fluid mb-3 animate__animated " style="width: 100px; height: 100px;" alt="">
           <br>
               @if (session('error_sesion_admin'))
@@ -30,7 +30,7 @@
 
             <form method="POST" action="{{route('login')}}">
               @csrf
-              <small class="text-justify fw-bold" for="">Selecciona tu tipo de usuario </small>
+              <small class="text-start fw-bold" for="">Selecciona tu tipo de usuario </small>
               <div data-mdb-input-init class="form-outline mb-4">
                 <select class="form-select" name="rol">
                   <option value="encargado">Encargado de SEH</option>
@@ -44,13 +44,13 @@
 
               <div data-mdb-input-init class="form-outline mb-4">
                 <input type="text" name="email" id="form1Example1" value="resendiz.galleta@gmail.com"  class="form-control border border-light" />
-                <label class="form-label" for="form1Example1">Correo Electronico</label>
+                <label class="form-label" for="form1Example12">Correo Electronico</label>
               </div>
             
 
               <div data-mdb-input-init class="form-outline mb-4">
                 <input type="password" name="password" value="password" id="form1Example2" class="form-control border border-light" />
-                <label class="form-label" for="form1Example2">Contraseña</label>
+                <label class="form-label" for="form1Example22">Contraseña</label>
               </div>
 
               <button data-mdb-ripple-init type="submit" class="btn btn-danger btn-block mt-4">Entrar</button>
@@ -60,6 +60,7 @@
       
       
           </div>
+
         </div>
 
 
