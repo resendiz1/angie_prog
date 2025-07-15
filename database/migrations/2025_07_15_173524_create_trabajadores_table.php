@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('operadores', function (Blueprint $table) {
+        Schema::create('trabajadores', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
             $table->string('puesto');
@@ -19,6 +19,10 @@ return new class extends Migration
             $table->string('contacto_emergencia');
             $table->string('enfermedad_cronica');
             $table->string('planta');
+            $table->string('brigada')->nullable()->default('Sin Brigada');
+            $table->string('comision')->nullable()->default('Sin Comisión');
+            $table->string('fotografia')->nullable()->default('/img/user.webp');
+            $table->text('observaciones')->nullable();
             $table->timestamps();
         });
     }
@@ -28,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('operadores');
+        Schema::dropIfExists('trabajadores');
     }
 };

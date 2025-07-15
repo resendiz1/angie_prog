@@ -1,49 +1,15 @@
 @extends('plantilla')
 @include('assets.nav_encargado')
 @section('contenido')
+    <style>
+        body{
+            background-color: white;
+        }
+    </style>
 
-    <div class="container-fluid bg-white p-5 mt-4  shadow shadow-sm border boder-secondary">
+    <div class="container-fluid p-5 mt-4">
 
         <div class="row justify-content-around">
-
-            {{-- Menu de los operadores  --}}
-            <div class="col-sm-12 col-md-12 col-lg-5 menu-brigadas pt-4 px-4 pb-2 text-white m-3">
-
-                <div class="row justify-content-center">
-                    <div class="col-7 text-center  justify-content-center bg-dark">
-                        <h4 class="mt-2">OPERADORES</h4>
-                    </div>
-                </div>
-
-
-
-                <div class="row mt-5 py-5 "  >
-
-                    <div class="col-12  p-2 mb-0  text-center" >
-                        <a  class="btn btn-dark" href="{{route('operadores.index')}}" style="color:white;">
-                            <i class="fa-solid fa-helmet-safety fa-2x"></i>
-                            <h6 class="mt-2">Gestionar datos de los operadores</h6>
-                        </a>
-                    </div>
-
-
-                </div>
-
-            </div>
-            {{-- Menu de los operadores  --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
             <div class="col-sm-12 col-md-12 col-lg-5 menu-contratistas pt-4 px-4 pb-2 text-white m-3">

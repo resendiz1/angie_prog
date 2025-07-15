@@ -29,7 +29,7 @@ return new class extends Migration
             $table->string('fecha_fabricacion');
             $table->string('vencimiento_antiguedad');
             $table->string('estado_actual');
-            $table->string('observaciones')->nullable()->default('sin observaciones');
+            $table->string('observaciones')->nullable()->default('Sin Observaciones');
             $table->string('foto1');
             $table->string('foto2');
             $table->string('foto3');

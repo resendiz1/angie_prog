@@ -1,4 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Arimo:ital,wght@0,400..700;1,400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Rowdies:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap');
+
+
+/* tipo de letras */
+.lexend {
+  font-family: "Lexend", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+/* tipo de letras */
+
 
 body{
     background-color: rgb(221, 215, 237); 
@@ -148,4 +160,13 @@ body{
 
 .image-magnifique:hover{
     transform: scale(1.2);
+}
+
+.button-zoom{
+    transition: transform .4s ease;
+    cursor: pointer;
+}
+
+.button-zoom:hover{
+    transform: scale(1.04);
 }

@@ -7,10 +7,10 @@
     <div class="container-fluid mt-0 p-5  fondo-login">
         <div class="row mt-5 justify-content-center">
       
-          <div class="col-sm-12 col-md-12 col-lg-4 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
-            <h1>Angie's App</h1>
+          <div class="col-sm-12 col-md-12 col-lg-3 bg-white shadow shadow-sm mt-5 border p-4 text-center sombra-filas">
+            <h1 class="lexend font-weight-bold">Angie</h1>
             <img src="img/angie.png" id="logo" class="img-fluid mb-3 animate__animated " style="width: 100px; height: 100px;" alt="">
-          <br>
+          <br><br>
               @if (session('error_sesion_admin'))
                   <span class="text-center text-danger fw-bold">{{session('error_sesion_admin')}}</span>
               @endif      
@@ -30,7 +30,7 @@
 
             <form method="POST" action="{{route('login')}}">
               @csrf
-              <small class="text-start fw-bold" for="">Selecciona tu tipo de usuario </small>
+              <small class="text-start fw-bold h5" for="">Selecciona tu tipo de usuario </small>
               <div data-mdb-input-init class="form-outline mb-4">
                 <select class="form-select" name="rol">
                   <option value="encargado">Encargado de SEH</option>

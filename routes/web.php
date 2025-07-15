@@ -7,6 +7,7 @@ use App\Http\Controllers\sesionesController;
 use App\Http\Controllers\extintoresController;
 use App\Http\Controllers\operadoresController;
 use App\Http\Controllers\contratistasController;
+use App\Http\Controllers\trabajadoresController;
 
 
 
@@ -55,17 +56,27 @@ Route::post('/encargado/extintores/agregar', [extintoresController::class, 'agre
 Route::delete('/encargado/extintores/{id}/eliminar', [extintoresController::class, 'eliminar_extintor'])->name('eliminar.extintor')->middleware('auth:encargado');
 Route::patch('/encargado/extintores/{id}/editar', [extintoresController::class, 'editar_extintor'])->name('editar.extintor')->middleware('auth:encargado');
 Route::patch('/encargado/extintores/{id}/mantenimiento', [extintoresController::class, 'mantenimiento_extintor'])->name('mantenimiento.extintor')->middleware('auth:encargado');Route::patch('/encargado/extintores/{id}/relleno', [extintoresController::class, 'recarga_extintor'])->name('recarga.extintor')->middleware('auth:encargado');
+
+
 Route::get('/encargado/extintores/{id}/detalle', [extintoresController::class, 'detalle_extintor'])->name('detalle.extintor')->middleware('auth:encargado');
+
+
 Route::post('/encargado/extintores/', [extintoresController::class, 'buscar_extintor'])->name('buscar.extintor')->middleware('auth:encargado');
+
+
+
 
 //Rutas que control lo que hacen las brigadas
 Route::get('/encargado/brigadistas/', [brigadaController::class, 'menu_brigada'])->name('menu.brigadas');
+Route::post('/encargado/brigadistas/nuevo_brigadista', [brigadaController::class, 'store_brigadista'])->name('store.brigadista');
+Route::delete('/encargado/brigadistas/{brigadista}/eliminar', [brigadaController::class, 'delete_brigadista'])->name('delete.brigadista');
+Route::put('/encargado/brigadistas/{brigadista}/editar', [brigadaController::class, 'edit_brigadista'])->name('edit.brigadista');
 
 
 
-//Rutas que van g3stionando a los operadores
-Route::get('/encargado/operadores/', [operadoresController::class, 'operadores_index'])->name('operadores.index');
-Route::post('/encargado/operadores/agregar', [operadoresController::class, 'agregar_operador'])->name('agregar.operador');
+//Rutas que van g3stionando a los trabajadres de la empresa principal
+Route::get('/encargado/trabajadores/', [trabajadoresController::class, 'trabajadores_index'])->name('trabajadores.index');
+Route::post('/encargado/trabajadores/agregar', [trabajadoresController::class, 'agregar_trabajador'])->name('agregar.trabajador');
 
 
 
